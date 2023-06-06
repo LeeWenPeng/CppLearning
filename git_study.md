@@ -1,16 +1,35 @@
 # arch linux 使用git
 
+<!-- vscode-markdown-toc -->
+* 1. [安装](#)
+* 2. [配置](#-1)
+* 3. [使用流程](#-1)
+* 4. [使用命令](#-1)
+	* 4.1. [创建一个本地版本库](#-1)
+	* 4.2. [下载git文件到本地仓库](#git)
+	* 4.3. [index 操作](#index)
+	* 4.4. [本地仓库操作](#-1)
+	* 4.5. [远程仓库操作](#-1)
+	* 4.6. [分支(branch)](#branch)
+	* 4.7. [标签(tag)](#tag)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 使用手册： <https://wiki.archlinuxcn.org/wiki/Git#%E9%85%8D%E7%BD%AE>
 
-[TOC]
 
-## 1. 安装
+
+##  1. <a name=''></a>安装
 
 ```shell
 pacman -S git
 ```
 
-## 2. 配置
+##  2. <a name='-1'></a>配置
 
 至少配置姓名和邮箱
 
@@ -19,7 +38,7 @@ git config --global user.name "<用户名>"
 git config --global user.email "<邮箱地址>"
 ```
 
-## 3. 使用流程
+##  3. <a name='-1'></a>使用流程
 
 流程：
 
@@ -31,21 +50,21 @@ graph TD;
 git远程仓库 --pull--> 本地仓库;
 ```
 
-## 4. 使用命令
+##  4. <a name='-1'></a>使用命令
 
-### 4.1. 创建一个本地版本库
+###  4.1. <a name='-1'></a>创建一个本地版本库
 
 1. 使用`mkdir`命令生成一个文件夹作为git本地仓库
 2. `cd`进入仓库
 3. 使用`git init`初始化一个git版本库
 
-### 4.2. 下载git文件到本地仓库
+###  4.2. <a name='git'></a>下载git文件到本地仓库
 
 ```shell
 git clone <repository>
 ```
 
-### 4.3. index 操作
+###  4.3. <a name='index'></a>index 操作
 
 1. 更新文件到index
 
@@ -83,7 +102,7 @@ git clone <repository>
     git restore
     ```
 
-### 4.4. 本地仓库操作
+###  4.4. <a name='-1'></a>本地仓库操作
 
 1. 提交更改
 
@@ -108,7 +127,7 @@ git clone <repository>
     git rm 文件名
     ```
 
-### 4.5. 远程仓库操作
+###  4.5. <a name='-1'></a>远程仓库操作
 
 1. 添加远程仓库
 
@@ -167,7 +186,7 @@ git clone <repository>
     git diff <本地仓库分支> <远程仓库名>/<分支名>
     ```
 
-### 4.6. 分支(branch)
+###  4.6. <a name='branch'></a> 分支(branch)
 
 分支类似于仓库中的隔间，当我们想对项目的某一方面作出一些尝试，但不想这个尝试会影响到项目时，可以创建一个分支并将更改文件保存在这个分支中。如果后续想要将这一部分融入到项目中时，那就将这个分支融入到主分支即可。
 
@@ -224,7 +243,7 @@ git clone <repository>
 question: 合并时的冲突问题
 answer: 手工介入，进入到相应文件进行修改
 
-### 标签(tag)
+###  4.7. <a name='tag'></a>标签(tag)
 
 发布一个版本时，通常先在版本库打一个标签(tag)，代表这个版本。标签指向打标签时的仓库的快照，取某个标签，也就是将那个标签对应的历史版本取出。
 
