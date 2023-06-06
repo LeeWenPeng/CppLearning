@@ -1,0 +1,45 @@
+<mxfile host="app.diagrams.net" modified="2023-05-18T08:22:41.506Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42" etag="B48mqI2XaZmePRezIgkn" version="21.1.7" type="device">
+  <diagram name="第 1 页" id="6dkmAV-BHhVbQNRhc_qD">
+    <mxGraphModel dx="1508" dy="869" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="YsBrcj-paFHd4NtUPqVI-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="232" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="YsBrcj-paFHd4NtUPqVI-78" target="YsBrcj-paFHd4NtUPqVI-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-94" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YsBrcj-paFHd4NtUPqVI-78" target="YsBrcj-paFHd4NtUPqVI-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-78" value="Son" style="rounded=0;whiteSpace=wrap;html=1;fontSize=26;" vertex="1" parent="1">
+          <mxGeometry x="85" y="247" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YsBrcj-paFHd4NtUPqVI-79" target="YsBrcj-paFHd4NtUPqVI-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-79" value="ClassA" style="rounded=0;whiteSpace=wrap;html=1;fontSize=26;" vertex="1" parent="1">
+          <mxGeometry x="312" y="202" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-88" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YsBrcj-paFHd4NtUPqVI-80" target="YsBrcj-paFHd4NtUPqVI-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-80" value="ClassB" style="rounded=0;whiteSpace=wrap;html=1;fontSize=26;" vertex="1" parent="1">
+          <mxGeometry x="310" y="289" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-81" value="Base" style="rounded=0;whiteSpace=wrap;html=1;fontSize=26;" vertex="1" parent="1">
+          <mxGeometry x="534" y="254" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-92" value="继承" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=0;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="452" y="281" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="YsBrcj-paFHd4NtUPqVI-91" value="继承" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=0;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="182" y="274" width="100" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
