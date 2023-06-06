@@ -113,13 +113,13 @@ git clone <repository>
     默认远程库的名字为`origin`，可以修改
 
     ```shell
-    git remote add origin git@github.com:相关路径
+    git remote add origin git@github.com:<相关路径，比如username/repo.git>
     ```
 
 2. 查看版本库连接的远程库
 
     ```shell
-    git remote -v
+    git remote [-v]
     ```
 
 3. 获取远程仓库内容
@@ -142,6 +142,12 @@ git clone <repository>
    ```shell
    git push [-u] origin master
    ```
+
+6. 删除远程仓库
+
+    ```shell
+    git remote rm 远程仓库名
+    ```
 
 ### 4.6. 分支(branch)
 
