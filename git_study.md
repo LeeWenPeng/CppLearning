@@ -137,9 +137,9 @@ git clone <repository>
 
 5. push
 
-    初次使用时，可以使用`-u`，将地址记录下来，以后就使用 `git push` 即可
-
-    如果仓库原本有文件，使用`-f`可以强推
+    + 在push前，需要创建一个
+    + 初次使用时，可以使用`-u`，将地址记录下来，以后就使用 `git push` 即可
+    + 如果仓库原本有文件，使用`-f`可以强推
 
    ```shell
    git push [-u] [-f] origin master
@@ -149,6 +149,20 @@ git clone <repository>
 
     ```shell
     git remote rm 远程仓库名
+    ```
+
+7. 比较远程仓库和本地仓库之间的差异
+
+    ```shell
+    git log -p <本地仓库分支名> remotes/<远程仓库名，一般是origin>/<远程仓库分支名>
+    ```
+
+    ```shell
+    git branch -a
+    ```
+
+    ```shell
+    git diff
     ```
 
 ### 4.6. 分支(branch)
