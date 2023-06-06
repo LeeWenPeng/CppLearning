@@ -2,6 +2,8 @@
 
 使用手册： <https://wiki.archlinuxcn.org/wiki/Git#%E9%85%8D%E7%BD%AE>
 
+[TOC]
+
 ## 1. 安装
 
 ```shell
@@ -154,7 +156,7 @@ git clone <repository>
 7. 比较远程仓库和本地仓库之间的差异
 
     ```shell
-    git log -p <本地仓库分支名> remotes/<远程仓库名，一般是origin>/<远程仓库分支名>
+    git log -p <本地仓库分支名> [remotes/]<远程仓库名，一般是origin>/<远程仓库分支名>
     ```
 
     ```shell
@@ -162,7 +164,7 @@ git clone <repository>
     ```
 
     ```shell
-    git diff
+    git diff <本地仓库分支> <远程仓库名>/<分支名>
     ```
 
 ### 4.6. 分支(branch)
@@ -193,12 +195,24 @@ git clone <repository>
     > git checkout -b <分支名>
     > ```
 
-4. 将一个分支并回主分支
-    合并时先切换分支到主分支，再合并
+4. 合并分支
+    合并时，需要将分支切换为主分支，再进行合并
 
     ```shell
-    git check <主分支名>
+    git checkout <主分支名>
     git merge <分支名>
+    ```
+
+    **合并撤回**:使用`--abort`命令
+
+    ```shell
+    git merge --abort
+    ```
+
+    或
+
+    ```shell
+    git pull --abort
     ```
 
 5. 删除分支

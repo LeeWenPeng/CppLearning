@@ -12,3 +12,4 @@
 
 3. markdownlint
     markdown语法检查器
+    规则：<https://www.jianshu.com/p/51523a1c6fe1>
