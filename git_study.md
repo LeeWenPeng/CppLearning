@@ -139,8 +139,10 @@ git clone <repository>
 
     初次使用时，可以使用`-u`，将地址记录下来，以后就使用 `git push` 即可
 
+    如果仓库原本有文件，使用`-f`可以强推
+
    ```shell
-   git push [-u] origin master
+   git push [-u] [-f] origin master
    ```
 
 6. 删除远程仓库

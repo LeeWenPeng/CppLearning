@@ -1,4 +1,4 @@
-# vscode 
+# vscode
 
 ## vscode使用markdown
 
@@ -8,6 +8,7 @@
     markdown插件
 
 2. Markdown Preview Mermaid Support
+   markdown绘图
 
 3. markdownlint
     markdown语法检查器
