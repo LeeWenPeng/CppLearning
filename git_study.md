@@ -21,8 +21,6 @@
 
 使用手册： <https://wiki.archlinuxcn.org/wiki/Git#%E9%85%8D%E7%BD%AE>
 
-
-
 ##  1. <a name=''></a>安装
 
 ```shell
