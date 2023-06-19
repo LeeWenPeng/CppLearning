@@ -43,9 +43,9 @@ git config --global user.email "<邮箱地址>"
 ```mermaid
 graph TD;
 
-文件 --add--> 暂存区(git目录中的index文件) --commit--> 本地仓库 --push--> git远程仓库;
-暂存区(git目录中的index文件) --reset--> 文件;
-git远程仓库 --pull--> 本地仓库;
+工作空间 --add--> 暂存区(git目录中的index文件) --commit--> 本地仓库 --push--> git远程仓库;
+本地仓库--checkout-->工作空间
+git远程仓库 --fetch/clone--> 本地仓库;
 ```
 
 ##  4. <a name='-1'></a>使用命令
@@ -62,6 +62,12 @@ git远程仓库 --pull--> 本地仓库;
 git clone <repository>
 ```
 
+> 对于在git中已经存储了很多内容的仓库而言，这些仓库创建本地版本库有两种方法：
+>
+>1. 先构建本地版本库，再连接远程仓库
+>
+>2. 直接将远程仓库`clone`到本地.
+
 ###  4.3. <a name='index'></a>index 操作
 
 1. 更新文件到index
@@ -69,6 +75,8 @@ git clone <repository>
     ```shell
     git add <pathspec>
     ```
+
+    通常 `git add .`
 
 2. 撤销修改
 
@@ -109,8 +117,9 @@ git clone <repository>
    ```
 
     常用参数：
-    + `-m`：不写提交消息，直接提交
-    + `--amend`：重做上次提交
+
+   * `-m`: msg，可以备注提交的事情，不必编写`commit`命令文件
+   * `--amend`：重做上次提交
 
 2. 撤销更改
 
@@ -127,7 +136,23 @@ git clone <repository>
 
 ###  4.5. <a name='-1'></a>远程仓库操作
 
-1. 添加远程仓库
+1. 密钥配置
+   1. 密钥生成
+
+        ```shell
+            ssh-keygen -t rsa -C <"注册的邮箱">
+        ```
+
+        > 无论上`windows`，还是`linux`，文件都会生成在用户目录下的`.ssh`文件夹下
+
+   2. 账户添加公钥
+      1. 复制文件夹中的`id_rsa.pub`中的内容
+      2. 粘贴到Github中的`SSH keys`中
+            > `用户` -> `Settings` -> `SSH and GPG keys` -> `SSH keys` -> `new SSH key` -> `key` -> `Add SSH key`
+            >
+            > 名字随便取，但`key`，直接源码复制粘贴，不能修改任何地方
+
+2. 添加远程仓库
 
     默认远程库的名字为`origin`，可以修改
 
@@ -135,42 +160,53 @@ git clone <repository>
     git remote add origin git@github.com:<相关路径，比如username/repo.git>
     ```
 
-2. 查看版本库连接的远程库
+3. 查看版本库连接的远程库
 
     ```shell
     git remote [-v]
     ```
 
-3. 获取远程仓库内容
+4. 获取远程仓库内容
 
     ```shell
     git fetch <label>
     ```
 
-4. pull
-    相当于`fetch` 加 `merge`
+5. pull
+    > 相当于`fetch` 加 `merge`
 
     ```shell
     git pull <label>
     ```
 
-5. push
+    > 等价于
+    >
+    > ```c++
+    > git fetch
+    > git log --graph --oneline origin/main <mybranch>
+    > git merge origin/main
+    > <git rebase origin/main>
+    > ```
 
-    + 在push前，需要创建一个
-    + 初次使用时，可以使用`-u`，将地址记录下来，以后就使用 `git push` 即可
-    + 如果仓库原本有文件，使用`-f`可以强推
+    >更推荐`git fetch`，可以保持程序员对更新操作的控制
+
+6. push
+
+    * 在push前，需要创建一个
+    * 初次使用时，可以使用`-u`，将地址记录下来，以后就使用 `git push` 即可
+    * 使用`-f`可以强制`push`文件到远程仓库
 
    ```shell
    git push [-u] [-f] origin master
    ```
 
-6. 删除远程仓库
+7. 删除远程仓库
 
     ```shell
     git remote rm 远程仓库名
     ```
 
-7. 比较远程仓库和本地仓库之间的差异
+8. 比较远程仓库和本地仓库之间的差异
 
     ```shell
     git log -p <本地仓库分支名> [remotes/]<远程仓库名，一般是origin>/<远程仓库分支名>
@@ -192,6 +228,13 @@ git clone <repository>
 
     ```shell
     git branch <分支名>
+    ```
+
+    仓库初始化后需要指定主分支，也就是第一次创建分支，
+    需要使用参数`-M`
+
+    ```shell
+    git branch -M main
     ```
 
 2. 查看分支
@@ -287,4 +330,10 @@ answer: 手工介入，进入到相应文件进行修改
 
     ```shell
     git push origin --tags
+    ```
+
+5. 指定标签信息
+
+    ```shell
+    git tag -a <tagname> -m "<标签信息>"
     ```
