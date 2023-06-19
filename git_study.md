@@ -5,13 +5,13 @@
 * 2. [配置](#-1)
 * 3. [使用流程](#-1)
 * 4. [使用命令](#-1)
-	* 4.1. [创建一个本地版本库](#-1)
-	* 4.2. [下载git文件到本地仓库](#git)
-	* 4.3. [index 操作](#index)
-	* 4.4. [本地仓库操作](#-1)
-	* 4.5. [远程仓库操作](#-1)
-	* 4.6. [分支(branch)](#branch)
-	* 4.7. [标签(tag)](#tag)
+  * 4.1. [创建一个本地版本库](#-1)
+  * 4.2. [下载git文件到本地仓库](#git)
+  * 4.3. [index 操作](#index)
+  * 4.4. [本地仓库操作](#-1)
+  * 4.5. [远程仓库操作](#-1)
+  * 4.6. [分支(branch)](#branch)
+  * 4.7. [标签(tag)](#tag)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -21,13 +21,13 @@
 
 使用手册： <https://wiki.archlinuxcn.org/wiki/Git#%E9%85%8D%E7%BD%AE>
 
-##  1. <a name=''></a>安装
+## 1. <a name=''></a>安装
 
 ```shell
 pacman -S git
 ```
 
-##  2. <a name='-1'></a>配置
+## 2. <a name='-1'></a>配置
 
 至少配置姓名和邮箱
 
@@ -36,7 +36,7 @@ git config --global user.name "<用户名>"
 git config --global user.email "<邮箱地址>"
 ```
 
-##  3. <a name='-1'></a>使用流程
+## 3. <a name='-1'></a>使用流程
 
 流程：
 
@@ -48,15 +48,15 @@ graph TD;
 git远程仓库 --fetch/clone--> 本地仓库;
 ```
 
-##  4. <a name='-1'></a>使用命令
+## 4. <a name='-1'></a>使用命令
 
-###  4.1. <a name='-1'></a>创建一个本地版本库
+### 4.1. <a name='-1'></a>创建一个本地版本库
 
 1. 使用`mkdir`命令生成一个文件夹作为git本地仓库
 2. `cd`进入仓库
 3. 使用`git init`初始化一个git版本库
 
-###  4.2. <a name='git'></a>下载git文件到本地仓库
+### 4.2. <a name='git'></a>下载git文件到本地仓库
 
 ```shell
 git clone <repository>
@@ -68,7 +68,7 @@ git clone <repository>
 >
 >2. 直接将远程仓库`clone`到本地.
 
-###  4.3. <a name='index'></a>index 操作
+### 4.3. <a name='index'></a>index 操作
 
 1. 更新文件到index
 
@@ -108,7 +108,7 @@ git clone <repository>
     git restore
     ```
 
-###  4.4. <a name='-1'></a>本地仓库操作
+### 4.4. <a name='-1'></a>本地仓库操作
 
 1. 提交更改
 
@@ -134,7 +134,7 @@ git clone <repository>
     git rm 文件名
     ```
 
-###  4.5. <a name='-1'></a>远程仓库操作
+### 4.5. <a name='-1'></a>远程仓库操作
 
 1. 密钥配置
    1. 密钥生成
@@ -166,11 +166,61 @@ git clone <repository>
     git remote [-v]
     ```
 
-4. 获取远程仓库内容
+4. 获取远程仓库内容——更新操作`fetch`
+   从一个或多个其他存储库中获取分支和标签
 
-    ```shell
-    git fetch <label>
-    ```
+   1. 获取更新
+
+      ```shell
+      git fetch <远程主机名，通常时origin> <分支名>
+      ```
+
+      更新所有分支时可以简化为
+
+        ```shell
+        git fetch <远程主机名>
+        # 或者干脆连主机名也省略
+        git fetch
+        ```
+
+        > 获取的远程分支，在本地通常使用`远程主机名/分支名`来读取，比如`origin/main`
+        >
+        > ```shell
+        > git branch <-r 或 -a>
+        > # -r：查看远程分支
+        > # -a: 查看所有分支
+        > ```
+        >
+
+   2. 对更新新建分支
+
+        ```shell
+        git checkout -b <新分支名> <origin/main>
+        ```
+
+   3. 查看分支
+
+        ```shell
+        git log --graph --oneline origin/main <mybranch>
+        # --graph
+        # --oneline : --pretty=oneline --abbrev-commit 的简写，表示（单行使用缩写）
+        ```
+
+        可以简写成：
+
+        ```shell
+        git log
+        # 或者
+        git log --graph
+        ```
+
+   4. 在本地合并远程分支
+
+        ```shell
+        git merge origin/main
+        # 或者
+        git rebase origin/main
+        ```
 
 5. pull
     > 相当于`fetch` 加 `merge`
@@ -185,10 +235,11 @@ git clone <repository>
     > git fetch
     > git log --graph --oneline origin/main <mybranch>
     > git merge origin/main
-    > <git rebase origin/main>
+    > # 或者
+    > git rebase origin/main
     > ```
-
-    >更推荐`git fetch`，可以保持程序员对更新操作的控制
+    >
+    > 更推荐`git fetch`，可以保持程序员对更新操作的控制
 
 6. push
 
@@ -220,7 +271,7 @@ git clone <repository>
     git diff <本地仓库分支> <远程仓库名>/<分支名>
     ```
 
-###  4.6. <a name='branch'></a> 分支(branch)
+### 4.6. <a name='branch'></a> 分支(branch)
 
 分支类似于仓库中的隔间，当我们想对项目的某一方面作出一些尝试，但不想这个尝试会影响到项目时，可以创建一个分支并将更改文件保存在这个分支中。如果后续想要将这一部分融入到项目中时，那就将这个分支融入到主分支即可。
 
@@ -284,7 +335,7 @@ git clone <repository>
 question: 合并时的冲突问题
 answer: 手工介入，进入到相应文件进行修改
 
-###  4.7. <a name='tag'></a>标签(tag)
+### 4.7. <a name='tag'></a>标签(tag)
 
 发布一个版本时，通常先在版本库打一个标签(tag)，代表这个版本。标签指向打标签时的仓库的快照，取某个标签，也就是将那个标签对应的历史版本取出。
 
