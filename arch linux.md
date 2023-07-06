@@ -1,60 +1,32 @@
 
 # Arch Linux
 
-## 目录功能
+## 一 shell指令
 
-## shell指令
-
-### 1 pacman指令
-
-#### 更新系统
-
-```shell
-pacman -Syu
-```
-
-#### 安装包
-
-1 官方包
-
-```shell
-pacman -S 包名
-```
-
-2 非官方包
-
-1. 进入AUR仓库中找到包的github找到资源
-
-   复制资源的`git clone url`
-
-2. 使用git clone工具下载
+1. 移动文件或目录
 
    ```shell
-   git clone <url>
+   mv <源文件或目录> <目标文件或目录>
+   # 第二个参数：
+   1. 文件。会将源文件改名为目标文件
+   2. 目录。会将源文件移动到目标目录中
    ```
 
-3. 打包
-
-    使用`pacman`中的`makepkg`
-
-    > 不允许使用root用户运行makepkg本身
-    > 如果前两步使用root用户，则`makepkg`会报**没有写入权限**的错误
-
-    ```shell
-    mkpkg -si
-    # -s / --syncdeps 构建包并安装所需的依赖项
-    # -r / --rmdeps makepkg稍后会删除不再需要的依赖项
-    # -i / --install 满足所有依赖项并且成功构建包后，在工作目录中创建一个包文件(pkgname-pkgver.pkg.tar.zst)，使用 -i 安装
-    # -c / --clean 清理剩余的文件和目录，对于包升级有用处
-    ```
-
-## 网络
+### 2 网络
 
 可视化
 
 ```shell
 nmtui
 ```
+
+### 3 系统
+
+1. 查看系统显卡
+
+   ```shell
+   lspci | grep -i nvidia
+   ```
 
 ## 环境
 
@@ -143,7 +115,50 @@ sudo pacman -S apache
 
 ### pacman
 
-1. 查看包
+### 1 pacman指令
+
+#### 更新系统
+
+```shell
+pacman -Syu
+```
+
+#### 安装包
+
+1 官方包
+
+```shell
+pacman -S 包名
+```
+
+2 非官方包
+
+1. 进入AUR仓库中找到包的github找到资源
+
+   复制资源的`git clone url`
+
+2. 使用git clone工具下载
+
+   ```shell
+   git clone <url>
+   ```
+
+3. 打包
+
+    使用`pacman`中的`makepkg`
+
+    > 不允许使用root用户运行makepkg本身
+    > 如果前两步使用root用户，则`makepkg`会报**没有写入权限**的错误
+
+    ```shell
+    mkpkg -si
+    # -s / --syncdeps 构建包并安装所需的依赖项
+    # -r / --rmdeps makepkg稍后会删除不再需要的依赖项
+    # -i / --install 满足所有依赖项并且成功构建包后，在工作目录中创建一个包文件(pkgname-pkgver.pkg.tar.zst)，使用 -i 安装
+    # -c / --clean 清理剩余的文件和目录，对于包升级有用处
+    ```
+
+#### 查看包
 
    ```shell
    pacman -Qq

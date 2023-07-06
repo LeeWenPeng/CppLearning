@@ -1,5 +1,7 @@
 # arch linux 安装 anaconda3
 
+anaconda3 的用户指南 <https://docs.conda.io/projects/conda/en/latest/user-guide/index.html>
+
 ## 一 安装教程
 
 1. 下载
@@ -72,7 +74,35 @@
    conda -V
    ```
 
-## 二 基础使用教程
+## 二 配置
+
+1. 生成配置文件`.condarc`
+
+   1. 使用 `shell` 命令自动生成
+      首次运行 `conda config` 命令，会自动在用户目录下创建该文件
+
+      ```shell
+      conda config --set show_channel_urls yes
+      ```
+
+   2. 直接在用户目录下创建文件
+
+2. 配置修改
+
+   1. 使用命令
+      > 该文件遵循YAML语法
+      > 使用`conda config --help`查看配置命令完整列表
+
+   2. 修改`.condarc`文件
+
+3. 配置清华镜像
+
+   清华镜像源配置到conda的手册 <https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>
+
+   1. 使用命令
+   2. 修改`.condarc`文件：直接将页面内的代码复制粘贴到`.condarc`文件中
+
+## 三 基础使用教程
 
 1. conda 自身
 
@@ -89,6 +119,7 @@
     ```shell
     # 1. 查看包
     conda list
+    # 可以使用该命令验证conda是否安装成功
 
     # 2. 下载包
     conda install <包名>
@@ -124,6 +155,55 @@
     
     # 5. 删除虚拟环境
     conda remove -n <虚拟环境名> --all
+
+    # 6. 查看虚拟环境已经安装的包
+    pip list
     ```
 
     > 进入虚拟环境后，对包的下载和删除操作都只影响当前虚拟环境
+
+## 四 conda 安装 pytorch
+
+pytorch 安装网址 <https://pytorch.org/>
+
+pytorch 查找与 `cuda` 对应版本 <https://pytorch.org/get-started/previous-versions/>
+
+conda安装代码
+
+```shell
+conda install pytorch torchvision torchaudio pytorch-cuda=<版本号> -c pytorch -c nvidia
+```
+
+> 如果电脑上没有安装cuda工具，那么执行命令时，可以忽略掉`pytorch-cuda=x.x`这个条件，因为 anaconda 安装 pytorch 时，会自动根据电脑上显卡驱动，安装对应版本的 `cuda`
+>
+> （如果按照上述，有时候，会安装成cpu版）
+>
+> 安装cuda和cudnn看下两节
+
+## 五 conda 安装 cuda
+
+1. 查看源上可用的 `cuda` 版本
+
+   ```shell
+   conda search cudatoolkit --info
+   ```
+
+2. 复制url到浏览器，下载到本地
+
+3. 本地安装
+
+   ```shell
+   conda install --use-local <包路径>
+   ```
+
+## 六 conda 安装 cudnn
+
+1. 查看源上与 `cuda` 对应的 `cudnn` 版本
+
+   ```shell
+   conda search cudnn --info
+   ```
+
+2. 复制url到浏览器，下载到本地
+
+3. 本地安装
