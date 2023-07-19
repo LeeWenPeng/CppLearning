@@ -1,4 +1,4 @@
-# arch linux 安装 anaconda3
+# anaconda3 安装在 arch linux  
 
 anaconda3 的用户指南 <https://docs.conda.io/projects/conda/en/latest/user-guide/index.html>
 
@@ -161,49 +161,3 @@ anaconda3 的用户指南 <https://docs.conda.io/projects/conda/en/latest/user-g
     ```
 
     > 进入虚拟环境后，对包的下载和删除操作都只影响当前虚拟环境
-
-## 四 conda 安装 pytorch
-
-pytorch 安装网址 <https://pytorch.org/>
-
-pytorch 查找与 `cuda` 对应版本 <https://pytorch.org/get-started/previous-versions/>
-
-conda安装代码
-
-```shell
-conda install pytorch torchvision torchaudio pytorch-cuda=<版本号> -c pytorch -c nvidia
-```
-
-> 如果电脑上没有安装cuda工具，那么执行命令时，可以忽略掉`pytorch-cuda=x.x`这个条件，因为 anaconda 安装 pytorch 时，会自动根据电脑上显卡驱动，安装对应版本的 `cuda`
->
-> （如果按照上述，有时候，会安装成cpu版）
->
-> 安装cuda和cudnn看下两节
-
-## 五 conda 安装 cuda
-
-1. 查看源上可用的 `cuda` 版本
-
-   ```shell
-   conda search cudatoolkit --info
-   ```
-
-2. 复制url到浏览器，下载到本地
-
-3. 本地安装
-
-   ```shell
-   conda install --use-local <包路径>
-   ```
-
-## 六 conda 安装 cudnn
-
-1. 查看源上与 `cuda` 对应的 `cudnn` 版本
-
-   ```shell
-   conda search cudnn --info
-   ```
-
-2. 复制url到浏览器，下载到本地
-
-3. 本地安装

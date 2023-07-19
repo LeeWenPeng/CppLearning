@@ -30,6 +30,41 @@ nmtui
 
 ## 环境
 
+### 桌面环境-sway
+
+手册<https://wiki.archlinux.org/title/Sway>
+
+#### 安装
+
+```shell
+sudo pacman -S sway swaylock swayidle swaybg
+```
+
+#### 配置
+
+配置文件在 `~/.config/sway/config`
+
+### 终端-kitty
+
+官网 <https://sw.kovidgoyal.net/kitty/>
+
+### vim
+
+使用`vim <文件>`
+
+1. `/`
+
+   在normal modal下键入 `/`进入搜索模式
+
+   键入想检索的单词然后回车，光标会跳到第一个匹配的单词
+
+   按下 `n` ，光标会跳到下一个匹配的单词
+
+   按下 `N` ，光标会跳到上一个匹配的单词
+
+默认目录
+/srv/http
+/srv/http/cgi-bin
 ### python
 
 #### 构建虚拟环境
@@ -115,12 +150,12 @@ sudo pacman -S apache
 
 ### pacman
 
-### 1 pacman指令
+pacman 使用手册 <https://wiki.archlinuxcn.org/wiki/Pacman>
 
 #### 更新系统
 
 ```shell
-pacman -Syu
+sudo pacman -Syu
 ```
 
 #### 安装包
@@ -160,6 +195,8 @@ pacman -S 包名
 
 #### 查看包
 
+   使用 Pacman 查看本地包数据库
+
    ```shell
    pacman -Qq
    ```
@@ -176,23 +213,12 @@ pacman -S 包名
    pacman -Qi <包名>
    ```
 
-### vim
+#### 删除包
 
-使用`vim <文件>`
-
-1. `/`
-
-   在normal modal下键入 `/`进入搜索模式
-
-   键入想检索的单词然后回车，光标会跳到第一个匹配的单词
-
-   按下 `n` ，光标会跳到下一个匹配的单词
-
-   按下 `N` ，光标会跳到上一个匹配的单词
-
-默认目录
-/srv/http
-/srv/http/cgi-bin
+```shell
+# 1. 最常用命令 删除指定的软件包
+pacman -Rsu <包名>
+```
 
 ### clash
 
@@ -213,3 +239,13 @@ curl -o /home/<用户名>/.config/clash/config.yaml <URL>
 ```shell
 clash
 ```
+
+### scrot
+
+github: <https://github.com/dreamer/scrot>
+
+使用手册: <https://www.howtoforge.com/tutorial/how-to-take-screenshots-in-linux-with-scrot/>
+
+安装：`sudo pacman -S scrot`
+
+> 这个工具只适用于x11，而不适用于wayland和xwayland
