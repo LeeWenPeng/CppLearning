@@ -1,5 +1,7 @@
 # arch linux 使用git
 
+[TOC]
+
 使用手册： <https://wiki.archlinuxcn.org/wiki/Git#%E9%85%8D%E7%BD%AE>
 
 ## 1. 安装
@@ -47,7 +49,7 @@ git clone <repository>
 >
 >1. 先构建本地版本库，再连接远程仓库
 >
->2. 直接将远程仓库`clone`到本地.
+>2. 直接将远程仓库`clone`到本地.然后再修改`remote`
 
 ### 4.3. index 操作
 
@@ -146,13 +148,13 @@ git clone <repository>
     git remote [-v]
     ```
 
-4. 获取远程仓库内容——更新操作`fetch`
+4. 获取远程仓库内容——更新操作`fetch`——推荐操作
    从一个或多个其他存储库中获取分支和标签
 
    1. 获取更新
 
       ```shell
-      git fetch <远程主机名，通常时origin> <分支名>
+      git fetch <远程主机名，通常时origin> <远程主机分支名>
 
       # 官方文档
       git push [--all | --branches |--mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run][--receive-pack=<git-receive-pack>]
@@ -370,4 +372,18 @@ answer: 手工介入，进入到相应文件进行修改
 
     ```shell
     git tag -a <tagname> -m "<标签信息>"
+    ```
+
+## 5. 遇到问题
+
+1. 本地分支比远程分支版本落后，不允许更新
+
+    解决方案：先拉再推
+
+    ```shell
+    git fetch origin main
+    git log FETCH_HEAD
+    git merge FETCH_HEAD
+
+    git push origin main
     ```
