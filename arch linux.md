@@ -1,6 +1,8 @@
 
 # Arch Linux
 
+[TOC]
+
 ## 一 shell指令
 
 1. 移动文件或目录
@@ -218,6 +220,8 @@ pacman -S 包名
 ```shell
 # 1. 最常用命令 删除指定的软件包
 pacman -Rsu <包名>
+# 2. 删除孤儿包
+sudo pacman -R $(sudo pacman -Qdtq)
 ```
 
 ### clash
