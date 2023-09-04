@@ -11,7 +11,7 @@ main 函数**执行之前**，主要是初始化系统相关资源:
 + 将 main 函数的参数 `argc`, `argv` 等传递给 main 函数, 然后才真正运行 main 函数
 + `__attribute__((constructor))`
 
-main 函数执行之后:
+main 函数**执行之后**:
 
 + 全局对象的析构函数会在 main 函数之后执行;
 + 可以用 atexit 注册一个函数, 它会在 main 之后执行;
