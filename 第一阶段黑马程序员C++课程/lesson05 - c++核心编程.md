@@ -2,7 +2,9 @@
 
 课程进度为：**lesson 84 - lesson 146**
 
-# 01 - 程序的内存模型 - 内存四区
+# 1 程序的内存模型
+
+## 1 内存四区
 
 **内存分区模型**：
 
@@ -29,7 +31,7 @@
 
 
 
-# 02 - 程序的内存模型 - 代码区和全局区
+## 2 - 程序的内存模型 - 代码区和全局区
 
 程序运行前
 
@@ -47,7 +49,7 @@
   + **==存放全局变量、静态变量、字符串常量、由const修饰的全局变量(全局常量)==**
   + **==全局区中的数据由操作系统负责释放==**
 
-# 03 - 程序的内存模型 - 栈区和堆区
+## 3 - 程序的内存模型 - 栈区和堆区
 
 程序运行后：
 
@@ -99,7 +101,7 @@
     >
     > 指针还是在栈区中，但指针中存放的地址是堆区的内存地址
 
-# 04 - 程序的内存模型 - new操作符
+## 4 - 程序的内存模型 - new操作符
 
 使用`new`关键字在堆区开辟内存空间
 
@@ -123,7 +125,9 @@
 
    语法：`delete[] 数组名;`
 
-# 05 -  引用 - 引用基本语法
+# 2 引用 
+
+## 1 引用基本语法
 
 `int a = 10;`
 
@@ -136,12 +140,12 @@
 > + 引用的数据类型必须要原变量的数据类型保持一致
 > + 引用创建的别名和原变量名，二者代表的是同一块内存，只是称呼改变了而已，“起别名”嘛
 
-# 06 -  引用 - 引用的注意事项
+## 2 引用的注意事项
 
 + **引用必须被初始化**
 + **引用一旦初始化，就不可以更改了**
 
-# 07 - 引用 - 引用做函数参数 - 引用传递
+## 3 引用做函数参数(引用传递)
 
 参数传递的三种方法：
 
@@ -182,14 +186,15 @@
 
    >  原因：如上述示例，`swap01()`函数中的两个形参为`int &a`、`int &b`，而传入是实参为`a`和`b`也就是说，在参数传递时，形参`a`和`b`就变成了实参`a`和`b`的两个别名(和原名一样的别名，hh)也就是说，形参`a`和`b`对应的内存空间就是实参`a`和`b`对应的内存空间所以对形参`a`和`b`的操作，其实就是在对实参`a`和`b`的操作
 
-# 08 - 引用 - 引用做函数返回值
+## 4 引用做函数返回值
 
-+ 不能传递局部变量的引用
++ ==不能传递局部变量的引用==
   + 还是同样的道理，局部变量在函数执行结束后，会被编译器自动释放
-+ 当引用做函数返回值的时候，可以做等式的左值被赋值
++ **当引用做函数返回值的时候，可以做等式的左值被赋值**
   + 类似于三元操作符，返回的是一个变量，是可以被赋值的
+  + ==链式操作==就是基于此
 
-# 09 - 引用 - 引用的本质
+## 5 引用的本质
 
 ==**引用本质上就是一个指针常量**==
 
@@ -223,7 +228,7 @@ int main(){
 
 
 
-# 10 -  引用 - 常量引用
+## 6 常量引用
 
 作用：修饰形参，防止误操作
 
@@ -256,7 +261,9 @@ int main(){
 }
 ```
 
-# 11 - 函数 - 函数的默认参数
+# 3 函数
+
+## 1 函数的默认参数
 
 语法：`返回值类型 函数名(参数 = 默认参数值){}`
 
@@ -309,13 +316,13 @@ int main() {
 > + 参数列表中，如果某一位置的参数有了默认值，那么该参数右边的参数都需要有默认值，否则会报错
 > + 调用函数时，对于有默认值的形参，如果有传入实参，就使用传入的实参；如果没传入实参，就是使用默认值
 
-# 12 - 函数 - 函数的占位参数
+## 2 函数的占位参数
 
 函数的参数列表中可以有占位参数，在调用该函数时，占位参数必须有值
 
-只有数据类型，没有变量名
+**只有数据类型，没有变量名**
 
-语法：`返回值类型 函数名(数据类型){}`
+语法：`返回值类型 函数名(参数, 数据类型){}`
 
 > 占位参数可以有默认值
 
@@ -326,6 +333,7 @@ int main() {
 using namespace std;
 
 //函数 - 占位参数
+// int 就是占位参数
 int sumNums(int a, int) {
 
 	return a;
@@ -352,7 +360,9 @@ int main() {
 }
 ```
 
-# 13 - 函数 - 函数重载
+> 目前有什么作用不明，占位参数在函数中也无法使用
+
+## 3 函数重载
 
 作用：函数名相同，参数列表不同，提高代码的复用性
 
@@ -414,9 +424,11 @@ int main() {
 }
 ```
 
-# 14 - 函数 - 函数重载 - 函数重载的注意事项
+## 4  函数重载的注意事项
 
-1. 引用作为参数重载的条件：有`const`修饰的引用和无`const`修饰的引用被认为是两种数据类型
+1. 引用作为参数重载的条件：**有`const`修饰的引用和无`const`修饰的引用被认为是两种数据类型**
+
+   + 也就是，使用 `const` 修饰，满足函数重载中的 ==参数类型不同==
 
    ```c++
    int func(int& a){...}
@@ -439,7 +451,7 @@ int main() {
 
    
 
-2. 当函数重载遇到默认参数 —— 函数重载时尽量不适用默认参数
+2. 当函数重载遇到默，可能导致错误 —— ==函数重载时尽量不适用默认参数==
 
    ```c++
    int func(int a){...}
@@ -451,11 +463,13 @@ int main() {
    func(10, 20)//成功调用
    ```
 
-# 15 - 类和对象 - 封装
+# 4 类和对象
 
-## 1 封装介绍
+## 1 封装
 
-### 1 概念
+### 1.1 封装介绍
+
+#### 1.1 概念
 
 java的三大特性和C++的一样
 
@@ -518,7 +532,7 @@ int main() {
 }
 ```
 
-### 2 设计学生类
+#### 1.2 设计学生类
 
 题目：设计一个学生类，属性拥有姓名和学号，可以给姓名和学号赋值，可以显示学生的姓名和学号
 
@@ -571,7 +585,7 @@ int main() {
 }
 ```
 
-## 2 访问权限
+### 1.2 访问权限
 
 C++中的三种权限：
 
@@ -635,7 +649,7 @@ int main() {
 }
 ```
 
-## 3 成员变量
+### 1.3 成员变量
 
 ### 问题：类对象作为类成员
 
@@ -719,11 +733,11 @@ int main() {
 >
 > 比如上述代码，对`Phone`类的使用，一定要在`Phone`类的完整声明之后
 
-## 4 成员函数
+### 1.4 成员函数
 
-## 5 静态成员
+### 1.5 静态成员
 
-### 1 静态成员变量
+1 静态成员变量
 
 **特性**：
 
@@ -783,7 +797,7 @@ int Person::m_a2 = 200;
   > 	因为静态成员变量本就不属于某一个具体对象，而是属于类，所有的类对象共享这个变量
   > 	同时，上述原因也是对象内存模型不包含静态成员变量的原因
 
-### 2 静态成员函数
+2 静态成员函数
 
 **特性：**
 
@@ -839,7 +853,7 @@ int Person::m_a2 = 200;
   类名::静态成员函数名(参数列表);
   ```
 
-## 5 - 类和对象 - 封装 - c++中class和struct的区别
+### 1.6 - 类和对象 - 封装 - c++中class和struct的区别
 
 主要区别：**默认访问权限不同**
 
@@ -888,7 +902,7 @@ int main() {
 >
 >   从这个初衷出发，则自然而然就理解为什么struct的默认权限和class不同了
 
-## 6 - 类和对象 - 封装 - 成员属性私有化
+### 1.7 - 类和对象 - 封装 - 成员属性私有化
 
 **在创建类后，最好将类中的属性的权限设置成`private`**
 
@@ -968,9 +982,9 @@ int main() {
 }
 ```
 
-## 8 - 案例
+### 8 - 案例
 
-### 1 立方体类
+#### 8.1 立方体类
 
 题目：设计立方体类(Cube)
 
@@ -1099,7 +1113,7 @@ int main() {
 }
 ```
 
-### 2 点和圆
+#### 8.2 点和圆
 
 题目：设计一个圆形类(Circle)，和一个点类(Point)，计算点和圆的关系
 
@@ -1217,11 +1231,13 @@ int main() {
 }
 ```
 
-# 22 - 类和对象 - 对象特性 - 构造函数和析构函数
+## 2 对象特性
 
-## 1 构造函数和析构函数
+### 1 构造函数和析构函数
 
-### 1 构造函数——初始化操作
+#### 1 构造函数和析构函数
+
+##### 1 构造函数——初始化操作
 
 + 没有返回值，不用写void
 + 函数名和类名相同
@@ -1229,7 +1245,7 @@ int main() {
 + 有参数，允许函数重载
 + 程序在调用对象时时，自动调用构造函数，只调用一次
 
-### 2 析构函数——清理操作
+##### 2 析构函数——清理操作
 
 + 没有返回值，不用写void
 + 函数名和类名相同，但在名称前需要加上符号`~`，即`~类名`
@@ -1298,9 +1314,9 @@ int main() {
 >
 > ​				  //程序运行到`doWork();`下一行，匿名对象调用析构函数
 
-## 2 构造函数的分类及调用
+#### 2 构造函数的分类及调用
 
-### 1 构造函数的分类
+##### 1 构造函数的分类
 
 + 无参构造-默认构造函数
 
@@ -1332,7 +1348,7 @@ int main() {
 
 
 
-### 2 调用方法
+##### 2 调用方法
 
 + 括号法
 
@@ -1427,7 +1443,7 @@ int main() {
 }
 ```
 
-## 3 拷贝构造函数的使用时机
+#### 3 拷贝构造函数的使用时机
 
 1. 使用一个已经创建好的对象，创建一个新对象
 
@@ -1532,7 +1548,7 @@ void test03() {
 }
 ```
 
-## 4 构造函数的调用规则
+#### 4 构造函数的调用规则
 
 1. 在写一个类出来后，编译器会自动为这个类提供三种默认方法
    1. 默认的无参构造方法（空方法体）
@@ -1543,7 +1559,7 @@ void test03() {
 
 > 所以，我们在重写类的构造方法的时候，应该先重写无参构造方法，再重写有参构造方法，最后再重写拷贝构造方法，避免出现不必要的错误
 
-# 26 - 类和对象 - 对象性质 - 深拷贝和浅拷贝
+### 2 浅拷贝
 
 浅拷贝：值拷贝
 
@@ -1685,7 +1701,7 @@ int main() {
 
 > 简而言之，当拷贝和被拷贝的对象二者之间，需要做完全的切割区分时，需要重写拷贝函数，保证二者完全的独立
 
-# 27 - 类和对象 - 对象性质 - 初始化列表
+27 - 类和对象 - 对象性质 - 初始化列表
 
 作用：初始化属性
 
@@ -1746,9 +1762,9 @@ int main() {
 
 > 
 
-# 29 - 类和对象 - 静态成员
+### 3 静态成员
 
-### 1 静态成员变量
+#### 1 静态成员变量
 
 **特性**：
 
@@ -1760,7 +1776,7 @@ int main() {
 
 3. **在编译阶段就分配内存**
 
-#### 1 创建——类内声明，类外初始化
+##### 1 创建——类内声明，类外初始化
 
 ```c++
 #include<iostream>
@@ -1779,11 +1795,11 @@ int Person::m_a2 = 200;
 
 > 如果没有对静态成员属性进行初始化，就会报`无法解析的外部符号`错误
 
-#### 2 访问权限
+##### 2 访问权限
 
 静态成员变量存在权限，和普通成员变量一样
 
-#### 3 访问方式
+##### 3 访问方式
 
 + 通过对象访问
 
@@ -1801,7 +1817,7 @@ int Person::m_a2 = 200;
 >
 > 所有的类对象共享这个变量
 
-### 2 静态成员函数
+#### 2 静态成员函数
 
 **特性：**
 
@@ -1818,7 +1834,7 @@ int Person::m_a2 = 200;
 > - 非静态成员函数参数列表中的首个参数为`this`指针，这样成员函数才只能知道是哪个对象调用了它，也因此，非静态成员函数才能够访问成员变量，能够使用`this`指针
 > - 静态成员函数参数列表中则没有`this`指针，也是特性2和特性3出现的原因
 
-#### 1 访问数据的权限
+##### 1 访问数据的权限
 
 静态成员函数只能访问静态成员变量，不能访问非静态成员变量
 
@@ -1837,11 +1853,11 @@ int Person::m_a2 = 200;
 >
 >   所以，对于静态成员函数，静态成员变量是可以唯一确认的，而非静态成员变量则不是。
 
-#### 2 函数的访问权限
+##### 2 函数的访问权限
 
 同非静态成员函数一样，也具有访问权限
 
-#### 3 调用方式
+##### 3 调用方式
 
 同静态成员变量的访问方式，具有两种
 
@@ -1857,7 +1873,7 @@ int Person::m_a2 = 200;
   类名::静态成员函数名(参数列表);
   ```
 
-# 30 - 类和对象 - 对象特性 - 成员变量和成员函数分开存储
+### 4 成员变量和成员函数分开存储
 
 只有非静态成员变量属于类的对象
 
@@ -1891,9 +1907,9 @@ int main() {
 >
 > 编译器会为每个空对象分配1个字节的内存空间，为了区分空对象在内存中的位置
 
-# 31 - 类和对象 - 对象特性 - this指针
+### 5  this指针
 
-在**非静态成员函数**中使用，**指向调用this指针所在成员函数的对象**
+在**==非静态成员函数==**中使用，**==指向调用this指针所在成员函数的对象==**
 
 用途：
 
@@ -1941,8 +1957,6 @@ int main() {
           int age;
       }
       ```
-
-      
 
 2. **返回对象本身**，也就是`return *this;`
 
@@ -2017,11 +2031,11 @@ int main() {
    >
    > `int a = temp;`
 
-3. 绑定对象
+3. **绑定对象**
 
    成员函数的第一个参数是编译器默认给函数加入的`this`指针，类对象在调用类成员函数时，成员函数才能够正确的访问该对象的成员变量
 
-# 32 - 类和对象 - 对象特性 - 空指针访问成员函数
+### 6 - 类和对象 - 对象特性 - 空指针访问成员函数
 
 **空指针可以访问成员函数，但不可以访问成员变量**
 
@@ -2057,7 +2071,7 @@ int main() {
 }
 ```
 
-# 33 - 类和对象 - 对象特性 - const修饰成员函数
+### 7 - 类和对象 - 对象特性 - const修饰成员函数
 
 **常函数**
 
@@ -2082,13 +2096,13 @@ private:
 ```
 
 >	其实`const`修饰是`this`指针
->									
+>																				
 >	在成员函数中访问成员变量，其实是隐式的使用`this`指针访问的
->									
+>																				
 >	this指针本质是指针常量（指向不可以改变，指向的值可以改变）
->									
+>																				
 >	使用`const`修饰后，`this`指针变成常量指针常量，指向和指向的值都不可以改变
->									
+>																				
 >	这也就是常函数中不允许修改变量的值的根本原因
 
 > 例外：`mutable`关键字
@@ -2113,15 +2127,28 @@ private:
 >
 > 另外，`mutable`修饰的变量，在常对象中也可以被修改
 
-# 34 - 类和对象 - 对象特性 - 友元
+### 8 友元
 
 关键字`friend`
 
-被`friend`修饰的函数或者类，能够访问另一个类中的私有成员
+被`friend`修饰的函数或者类，能够访问友元声明所在的另一个类中的私有成员
 
 友元三种实现：
 
-### **1 全局函数做友元**
+##### **1 全局函数做友元**
+
+语法：`func` 函数是 `ClassB` 的友元函数
+
+```c++
+class ClassB{
+    friend returnType func(argums,...);
+public:
+    ...
+}
+returnType func(argums,...);
+```
+
+
 
 在类的最前头，使用`friend`关键字，对全局函数进行修饰声明，则在这个全局函数中，可以访问该类中的私有成员
 
@@ -2156,9 +2183,23 @@ int main() {
 }
 ```
 
-> 全局函数可以在函数定义之前，被声明为友元函数
+> 全局函数可以在该函数定义之前，就被声明为友元函数
+>
+> 因为全局函数是被首先加载进入内存的，所以，无论在代码的哪个位置，其被编译的时间也总是要先于类的编译，所以全局函数可以在该函数被定义前，就在类中被声明为友元函数
 
-### **2 类做友元**
+##### **2 类做友元**
+
+语法：`ClassA` 是 `ClassB` 的友元类
+
+```c++
+class ClassB{
+   	friend class ClassA;
+public:
+    ...
+}
+```
+
+
 
 ```c++
 #include<iostream>
@@ -2206,7 +2247,25 @@ int main() {
 
 
 
-### **3 成员函数做友元**
+##### **3 成员函数做友元**
+
+语法：
+
+```c++
+class ClassA{
+    public:
+    returnType func(argums, ...){
+        ...
+    }
+}
+class ClassB{
+    friend ClassA::func(argums, ...);
+    public:
+        ...
+}
+```
+
+
 
 ```c++
 #include<iostream>
@@ -2254,21 +2313,21 @@ int main() {
 }
 ```
 
-> **成员函数在其完整类声明出现前不能声明为友元函数**
+> + ==成员函数在其完整类声明出现前不能声明为友元函数==
+>   + 所以声明友元函数的语句，比如`friend void FriendClass::visit();`，一定要写在`FriendClass`类完定义之后
 >
-> 所以声明友元函数的语句，比如`friend void FriendClass::visit();`，一定要写在`FriendClass`类完整声明之后
->
-> **由于友元声明只能放到类内，所以含有友元声明的类声明只能放到包含友元函数的类完整声明之后**
+> + ==由于友元声明只能放到类内，所以含有友元声明的类声明只能放到包含友元函数的类完整声明之后==
+>   + 也就是，如果 `ClassB` 含有 `ClassA` 成员函数的友元声明，那么 `ClassB` 的声明，一定要在 `ClassA `的完整定义后
 
-# 35 - 类和对象 - C++运算符重载
+## 3 C++运算符重载
 
-## 1 加号运算符重载
+### 1 加号运算符重载
 
 **实现两个自定义数据类型相加的运算**
 
 本质上和普通的重载是一回事
 
-### **1 通过普通的成员函数，实现自定义数据类型相加**，如下
+#### **1 通过普通的成员函数，实现自定义数据类型相加**
 
 ```c++
 class People {
@@ -2295,7 +2354,7 @@ int main() {
 }
 ```
 
-### **2 使用成员函数进行加号运算符重载**
+#### **2 使用成员函数进行加号运算符重载**
 
 > 将上述成员函数名`peoplePlusPeople`修改为`operator+`
 
@@ -2327,7 +2386,7 @@ int main() {
 }
 ```
 
-### **3 使用全局函数进行加号运算符重载**
+#### **3 使用全局函数进行加号运算符重载**
 
 ```c++
 class People {
@@ -2359,7 +2418,7 @@ int main() {
 > 2. 和普通的函数重载没有本质区别
 > 3. 在调用时可以简化为运算操作符的调用方式
 
-## 2 左移运算符重载
+### 2 左移运算符重载
 
 **输出自定义数据类型**
 
@@ -2434,7 +2493,7 @@ int main() {
 >
 >    `ostream`
 
-## 3 递增运算符重载
+### 3 递增运算符重载
 
 创建自定义整型类型，重载自定义整型的递增运算
 
@@ -2538,7 +2597,7 @@ int main() {
 
 
 
-## 4 赋值运算符重载
+### 4 赋值运算符重载
 
 自定义数据类型之间的赋值操作
 
@@ -2617,7 +2676,7 @@ int main() {
 >
 > 4. 赋值操作需要链式编程
 
-## 5 关系运算符重载
+### 5 关系运算符重载
 
 自定义数据类型的关系运算
 
@@ -2676,7 +2735,7 @@ int main() {
 }
 ```
 
-## 6 函数调用运算符重载
+### 6 函数调用运算符重载
 
 `()`的重载
 
@@ -2707,9 +2766,9 @@ int main() {
 
 > 由于`()`运算符重载后的调用，使得类的调用像是函数调用，所以这个也叫**仿函数**
 
-# 36 - 类和对象 - 继承 
+## 4 类和对象 - 继承 
 
-## 1 基本语法
+##### 1 基本语法
 
 语法：`class 子类 : 继承方式 父类`
 
@@ -2779,7 +2838,7 @@ int main() {
 > 1. 从父类中继承的部分，共性
 > 2. 自己特有的部分，个性
 
-## 2 继承方式
+##### 2 继承方式
 
 继承语法：`class 子类 : 继承方式 父类`
 
@@ -2829,7 +2888,7 @@ int main() {
 > + 保护继承(protected)：父类中是什么权限，到子类中都是保护权限(protected)
 > + 私有继承(private)：父类中是什么权限，到子类中都是私有权限(private)
 
-## 3 继承中的对象模型
+##### 3 继承中的对象模型
 
 问题：父类中的成员，被子类继承后，有多少属于子类？
 
@@ -2882,7 +2941,7 @@ int main() {
 
    ![image-20230518100037823](lesson05 - c++核心编程/img/image-20230518100037823.png)
 
-## 4 继承中的构造和析构顺序
+##### 4 继承中的构造和析构顺序
 
 **先构造父类，后构造子类**
 
@@ -2928,7 +2987,7 @@ int main() {
 }
 ```
 
-## 5 继承同名成员处理方式
+##### 5 继承同名成员处理方式
 
 问题：当子类与父类出现同名成员时，如何通过子类对象访问到子类或父类中的同名成员呢？
 
@@ -3039,7 +3098,7 @@ int main() {
 >      + 第一个`::`代表通过类名访问
 >      + 第二个`::`代表父类作用域内
 
-## 6 多继承语法
+##### 6 多继承语法
 
 C++允许一个子类继承多个父类
 
@@ -3084,9 +3143,9 @@ int main() {
 
 
 
-## 7 菱形继承问题
+##### 7 菱形继承问题
 
-### **问题1：菱形继承重复的成员变量**
+###### **问题1：菱形继承重复的成员变量**
 
 菱形继承是如图所示的继承情况
 
@@ -3153,7 +3212,7 @@ int main() {
 
 
 
-### 问题2：虚继承解决菱形继承的底层机制
+###### 问题2：虚继承解决菱形继承的底层机制
 
 ```c++
 #include<iostream>
@@ -3199,7 +3258,7 @@ int main() {
 
 也就是说，**虚继承的目的就是消除多继承产生的同名成员歧义**
 
-### **问题3：类占内存空间大小计算**
+###### **问题3：类占内存空间大小计算**
 
 > 当类中存在虚函数时，类就会产生一个虚函数表，也就需要一个**指向虚函数表指针**
 >
@@ -3306,7 +3365,7 @@ int main() {
 
 ![image-20230519093128338](lesson05 - c++核心编程/img/image-20230519093128338.png)
 
-### 问题4：间接虚基类中重写从虚基类继承下来的成员会造成什么影响？
+###### 问题4：间接虚基类中重写从虚基类继承下来的成员会造成什么影响？
 
 **只有一条继承路线上重写**
 
@@ -3427,7 +3486,7 @@ int main() {
 > | `ClassB`线    | `s.ClassB::b_a`       | `ClassB`覆写的`b_a`    |
 > |               | `s.ClassB::Base::b_a` | 被隐藏的`Base`中的成员 |
 
-## 8 多态
+## 5 多态
 
 1. 静态多态——重载：函数名复用
    1. 包括**函数重载**和**运算符重载**
@@ -3478,7 +3537,9 @@ public:
         cout << "Animal在说话" << endl;
     }
 };
+
 ...
+    
 int main() {
     Cat cat;
     DoSpeak(cat);//Cat在说话
@@ -3494,4 +3555,748 @@ int main() {
 > 2. 多态的使用条件：父类引用或者指针指向子类对象
 
 ### 2 原理分析：
+
+多态，依靠父类中存在虚函数，子类对虚函数重写而实现。所以这里有两个概念需要了解：
+
+1. 虚函数
+   1. 原理：如果一个类中有虚函数，那么首先，这个类中会保存一个虚函数指针，这个指针指向虚函数表，在表中存放虚函数的地址
+2. 函数重写
+   1. 是子类和父类存在的函数关系
+   2. 要求：
+      1. 子类和父类中对应的函数，函数名和函数的参数列表完全相同
+      2. 父类对应函数被关键字 `virtual` 修饰
+
+对这两个概念有所了解后，多态就很好理解了：
+
+		首先，在父类中定义虚函数。这时，父类的内存模型中会存在一个父类的虚函数表和一个指向虚函数表的指针，虚函数表中存放了父类虚函数的内存地址；
+		然后，子类继承父类。子类继承父类的虚函数表和指针，虚函数表中是从父类那里继承来的虚函数，也就是说，这时子类的内存模型和父类的内存模型是一样的；
+		最后，子类进行函数重写。这时在子类的内存模型中，子类的重写后的函数，就会将从父类继承来的函数覆盖掉。
+		所以，当父类的引用注入子类的对象时，调用的函数就是子类重写后的函数了。
+
+### 3 多态案例 - 计算器类
+
+**题目**：分别用普通写法和多态技术设计实现两个操作数进行运算的计算器类
+
+#### 1 普通实现
+
+代码：
+
+```c++
+class Caculator{
+public:
+public:
+    void setA(double num){
+        a = num;
+    }
+    void setB(double num){
+        b = num;
+    }
+    double getA(){
+        return a;
+    }
+    double getB(){
+        return b;
+    }
+    double getResult(string oper){
+        if(oper == "+") return a+b;
+        else if (oper == "-") return a-b;
+        else if (oper == "*") return a*b;
+        //如果需要修改功能，需要修改源码
+        //在真实开发中提倡开闭原则：
+        //1. 对扩展开放
+        //2. 对修改关闭
+    }
+private:
+    double a, b;// 两个操作数
+};
+void test01(){
+    Caculator c;
+
+    double a = 10, b = 100;
+
+    c.setA(a);
+    c.setB(b);
+
+    cout << a << "+" << b << "=" << c.getResult("+") << endl;
+    cout << a << "-" << b << "=" << c.getResult("-") << endl;
+    cout << a << "*" << b << "=" << c.getResult("*") << endl;
+}
+```
+
+
+
+#### 2 多态实现
+
+代码：
+
+```c++
+#include<iostream>
+using namespace std;
+
+class AbstractCaculator{
+public:
+    virtual double getResult(){
+        return 0;
+    }
+    double m_num1, m_num2;
+};
+class AddCaculator: public AbstractCaculator{
+    double getResult(){
+        return m_num1 + m_num2;
+    }
+};
+class SubCaculator: public AbstractCaculator{
+    double getResult(){
+        return m_num1 - m_num2;
+    }
+};
+class MulCaculator: public AbstractCaculator{
+    double getResult(){
+        return m_num1 * m_num2;
+    }
+};
+void test02(){
+    AbstractCaculator * abstractCaculator = new AddCaculator();
+    abstractCaculator->m_num1 = 10;
+    abstractCaculator->m_num2 = 20;
+
+    cout << abstractCaculator->m_num1 << "+" << abstractCaculator->m_num2 << "=" << abstractCaculator->getResult()<<endl;
+    delete abstractCaculator;
+
+    abstractCaculator = new SubCaculator();
+    abstractCaculator->m_num1 = 10;
+    abstractCaculator->m_num2 = 20;
+    cout << abstractCaculator->m_num1 << "-" << abstractCaculator->m_num2 << "=" << abstractCaculator->getResult()<<endl;
+    delete abstractCaculator;
+
+    abstractCaculator = new MulCaculator();
+    abstractCaculator->m_num1 = 10;
+    abstractCaculator->m_num2 = 20;
+    cout << abstractCaculator->m_num1 << "*" << abstractCaculator->m_num2 << "=" << abstractCaculator->getResult()<<endl;
+    delete abstractCaculator;
+}
+```
+
+#### 3 总结：
+
+多态：
+
++ 项目结构更清晰，可读性更高
++ 更好的可扩展维护性
+
+### 4 纯虚函数和抽象类
+
+#### 1 纯虚函数
+
+语法：`virtual [datatype] [nameOfFunc]([argums]) = 0;`
+
+```c++
+// 虚函数
+virtual double getResult(){
+    return 0;
+}
+
+// 纯虚函数
+virtual double getResult() = 0;
+```
+
+> 父类中设置的虚函数往往是得不到使用的，所以为了方便，直接将这个函数赋值为 0，将虚函数变成纯虚函数
+
+#### 2 抽象类
+
+当一个类中存在纯虚函数，这个类就是抽象类
+
+> + 父类中存在纯虚函数时，如果子类未**重写**该纯虚函数，则这个子类也是抽象类
+> + ==抽象类不允许实例化对象==，无论在栈区还是在堆区
+> + 所以，==子类必须重写父类的纯虚函数==
+
+### 5 虚析构函数和纯虚析构函数
+
+虚析构语法：`virtual ~ClassName(){}`
+
+纯虚析构语法：
+
+```c++
+// 类内声明
+virtual ~ClassName()=0;
+
+//类外实现
+ClassName::~ClassName(){
+    ...
+}
+```
+
+作用：解决==父类指针释放子类对象==的难点
+
+#### 1 未使用虚构函数时
+
+```c++
+class Animal{
+public:
+Animal(){
+    cout << "Animal 构造函数调用" << endl;
+}
+~Animal(){
+    cout << "Animal 析构函数调用" << endl;
+}
+public:
+virtual void doSpeak()=0;
+public:
+};
+
+class Cat:public Animal{
+public:
+Cat(string name){
+    cout << "Cat 构造函数调用" << endl;
+    m_name = new string(name);
+}
+~Cat(){
+    cout << "Cat 析构函数调用" << endl;
+    if(m_name != NULL){
+        
+    }
+}
+public:
+virtual void doSpeak(){
+    cout << *m_name + "喵喵喵" << endl;
+}
+public:
+string * m_name;
+};
+void test01(){
+    Animal * cat = new Cat("Tom");
+
+    cat->doSpeak();
+
+    delete cat;
+    /*
+    result:
+    Animal 构造函数调用
+    Cat 构造函数调用
+    Tom喵喵喵
+    Animal 析构函数调用
+    
+    错误：内存泄漏
+    原因：这里 cat 是 Animal 类型的，也就是父类指针，指向了 Animal 的子类 Cat
+    所以，当 delete 的时候，其实 delete 了父类指针，但父类指针不会调用子类的析构函数
+    所以这里只打印出了父类的析构，也就照成了内存泄漏
+    修改方案：虚析构函数和纯虚析构函数
+    */
+}
+```
+
+> 当 `delete` 父类指向子类对象的指针时，不会调用子类析构函数，导致如果子类中有开辟在堆区的数据，得不到释放，从而导致**==内存泄漏==**
+
+#### 2 将父类析构函数修改为虚析构函数
+
+```c++
+class Animal{
+public:
+    Animal(){
+        cout << "Animal 构造函数调用" << endl;
+    }
+	virtual ~Animal(){
+    	cout << "Animal 虚析构函数调用" << endl;
+	}
+    virtual doSpeak()=0;
+}
+/*
+    Animal 构造函数调用
+    Cat 构造函数调用
+    Tom喵喵喵
+    Cat 析构函数调用
+    Animal 虚析构函数调用
+
+*/
+```
+
+#### 3 将父类析构函数改为纯虚析构函数并实现
+
+```c++
+class Animal{
+public:
+    Animal(){
+        cout << "Animal 构造函数调用" << endl;
+        }
+	virtual ~Animal();
+public:
+    virtual doSpeak()=0;
+}
+// 类内声明，类外实现
+Animal::~Animal(){
+    cout << "Animal 纯虚析构函数调用" << endl;
+}
+/*Animal 构造函数调用
+Cat 构造函数调用
+Tom喵喵喵
+Cat 析构函数调用
+Animal 纯虚析构函数调用*/
+```
+
+> + 拥有纯虚析构函数的类，也是抽象类，不允许被实例化
+> + 如果使用多态，就需要将父类==纯虚析构函数==或虚析构函数实例化，尤其是纯虚析构函数；否则，当出现父类指针指向子类对象的情况时，编译会报错。
+
+#### 4 总结
+
+1. 使用多态时，如果父类不使用==虚析构函数==或==纯虚析构函数==，会出现子类对象内存释放不干净的==内存泄漏==错误
+2. 拥有纯虚析构函数的类，也是抽象类，不允许被实例化
+3. 如果使用多态，就需要将父类==纯虚析构函数==或虚析构函数==实现==，尤其是纯虚析构函数；否则，当出现父类指针指向子类对象的情况时，编译会报错。
+4. 纯虚析构函数的实现方式是：==类内声明，类外实现==
+
+### 6 多态案例 - 组装电脑
+
+**案例**：电脑组装
+
+​	电脑主要组成部件为 CPU (用于计算) ，显卡 (用于显示) ，内存条(用于存储)
+​	将每个零件封装出抽象基类，并且提供不同的厂商生产不同的零件，例如Intel厂商和Lenovo厂商
+​	创建电脑类提供让电脑工作的函数，并且调用每个零件工作的接口测试时组装三台不同的电脑进行工作
+
+```c++
+#include<iostream>
+#include<string>
+#include <vector>
+using namespace std;
+
+// 抽象类
+class AbstractCPU{
+public:
+    virtual ~AbstractCPU()=0;
+public:
+    void setManufacturers(string manufacturers){
+        m_manufacturers = manufacturers;
+    }
+    virtual void caculate() = 0;
+public:
+    string m_manufacturers;
+};
+AbstractCPU:: ~AbstractCPU(){
+    cout << "CPU 被析构" << endl;
+}
+
+class AbstractGPU{
+    public:
+    virtual ~AbstractGPU()=0;
+    public:
+    virtual void display() = 0;
+    public:
+};
+AbstractGPU::~AbstractGPU(){
+    cout << "GPU 被析构" << endl;
+}
+
+class AbstractMemorySticks{
+    public:
+    virtual ~AbstractMemorySticks() = 0;
+    public:
+    virtual void storage() = 0;
+    public:
+};
+AbstractMemorySticks::~AbstractMemorySticks(){
+    cout << "mms 被析构" << endl;
+}
+
+// 计算机类
+class Computer{
+    public:
+    Computer(AbstractCPU *cpu, AbstractGPU *gpu, AbstractMemorySticks *mms){
+        m_cpu = cpu;
+        m_gpu = gpu;
+        m_mms = mms;
+    }
+
+    ~Computer(){
+        // 释放 CPU
+        if(m_cpu != NULL){
+            delete m_cpu;
+            m_cpu == NULL;
+        }
+        // 释放 GPU
+        if(m_cpu != NULL){
+            delete m_gpu;
+            m_gpu == NULL;
+        }
+        // 释放 Mms
+        if(m_cpu != NULL){
+            delete m_mms;
+            m_mms == NULL;
+        }
+        cout << "Computer 被析构" << endl;
+    }
+    public:
+    void doWork(){
+        m_cpu->caculate();
+        m_gpu->display();
+        m_mms->storage();
+    }
+    private:
+    AbstractCPU * m_cpu;
+    AbstractGPU * m_gpu;
+    AbstractMemorySticks * m_mms;
+};
+
+
+// Inter
+class InterCPU:public AbstractCPU{
+    public:
+    public:
+    virtual void caculate(){
+        cout << "Inter 厂商的 CPU 开始运行" << endl;
+    }
+    private:
+};
+class InterGpu: public AbstractGPU{
+public:
+public:
+    virtual void display(){
+        cout << "Inter 厂商的 GPU 开始显示了" << endl;
+
+    }
+};
+class InterMms: public AbstractMemorySticks{
+public:
+public:
+    virtual void storage(){
+        cout << "Inter 厂商的内存条开始存储了" << endl;
+
+    }
+};
+
+
+// Lenvo
+class LenvoCPU:public AbstractCPU{
+    public:
+    public:
+    virtual void caculate(){
+        cout << "Lenvo 厂商的 CPU 开始运行" << endl;
+    }
+    private:
+};
+class LenvoGpu: public AbstractGPU{
+public:
+public:
+    virtual void display(){
+        cout << "Lenvo 厂商的 GPU 开始显示了" << endl;
+
+    }
+};
+class LenvoMms: public AbstractMemorySticks{
+public:
+public:
+    virtual void storage(){
+        cout << "Lenvo 厂商的内存条开始存储了" << endl;
+
+    }
+};
+
+
+void test01(){
+    // Inter 配件
+    AbstractCPU *cpuOfInter = new InterCPU;
+    AbstractGPU * gpuOfInter = new InterGpu;
+    AbstractMemorySticks * mmsOfInter = new InterMms;
+
+    // Lenvo 配件
+    AbstractCPU *cpuOfLenvo = new LenvoCPU;
+    AbstractGPU * gpuOfLenvo = new LenvoGpu;
+    AbstractMemorySticks * mmsOfLenvo = new LenvoMms;
+
+    // Inter 官方牌子
+    Computer * computerOfInter = new Computer(cpuOfInter, gpuOfInter, mmsOfInter);
+
+    // Lenvo 官方牌子
+    Computer * computerOfLenvo = new Computer(cpuOfLenvo, gpuOfLenvo,mmsOfLenvo);
+
+    // 用户 DIY
+    Computer * computerOfUserDIY = new Computer(cpuOfInter, gpuOfLenvo, mmsOfInter);
+
+    cout << "Inter _______________" << endl;
+    computerOfInter->doWork();
+    delete computerOfInter;
+    cout <<endl;
+
+    cout << "Lenvo _______________" << endl;
+    computerOfLenvo->doWork();
+    delete computerOfLenvo;
+    cout <<endl;
+
+    cout << "User DIY _______________" << endl;
+    computerOfUserDIY->doWork();
+    delete computerOfUserDIY;
+    cout <<endl;
+
+
+}
+int main(){
+    test01();
+    return 0;
+}
+```
+
+#### 总结：
+
++ 多态的使用是为了实现==对扩展开放，对修改关闭==的原则
++ 多态的使用依赖于==虚函数==和==纯虚函数==
+  + 在父类中定义虚函数和纯虚函数，在子类中实现
++ 存在纯虚函数的类叫做==抽象类==，**抽象类不允许实例化**
++ ==虚析构函数==和==纯虚析构==是为了**解决父类引用指向子类对象时，对子类对象中在堆区生成的数据的释放问题**
++ 虚函数和纯虚函数的==原理==为：**子类实现函数覆盖掉，从父类继承来的虚函数表中原函数，从而在父类调用函数时，会自动调用子类对应虚函数表中的实现后的虚函数。**
++ 纯虚析构函数一定要实现，而且是在类外实现
+
+# 5 文件操作
+
+## 1 文本文件
+
+c++ 文件操作也是面向对象的
+
+c++ 提供文件流 `<fstream>` 管理类管理文件的读写操作
+
+作用：
+
++ 程序产生数据都是临时数据，在程序结束后都会被释放
++ 通过将数据写入文件，可以进行==数据持久化==
+
+### 1.1 写文件
+
+流程：
+
+1. 包含头文件 `#include <fstream>`
+2. 创建流对象 `fstream ofs;`
+3. 指定打开方式 `ofs.open('<文件路径\\文件名>', <文件打开方式>);`
+4. 写内容 `ofs << "内容";`
+5. 关闭流对象 `ofs.close();`
+
+| 文件打开方式  | 描述                           |
+| ------------- | ------------------------------ |
+| `ios::in`     | 为读文件而打开文件             |
+| `ios::out`    | 为写文件而打开文件             |
+| `ios::ate`    | 打开后初始位置在文件末尾       |
+| `ios::app`    | 追加的方式写文件               |
+| `ios::trunc`  | 如果文件已存在，先删除，再新建 |
+| `ios::binary` | 以二进制方式打开文件           |
+
+对于复合操作，使用 `|` 
+
+比如以二进制方式读取文件 `ios::in | ios::binary`
+
+
+
+```c++
+// 1. 引入头文件
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    // 2. 创建流对象
+    ofstream ofs;
+
+    // 3. 指定打开方式
+    ofs.open("test.txt", ios::out);
+
+    // 4. 写入
+    ofs << "测试文件写入方法" << endl;
+    ofs << "测试文件写入方法" << endl;
+    ofs << "测试文件写入方法" << endl;
+
+    // 5. 关闭
+    ofs.close();
+
+    return 0;
+}
+```
+
+
+
+### 1.2 读文件
+
+过程：
+
+1. 引入头文件 `#include <fstream>`
+2. 创建流对象 `ifstream ifs;`
+3. 设置文件打开方式 `ifs.open("<文件路径\\文件名>", <文件打开方式>)`
+4. 读入文件
+5. 关闭文件流
+
+```c++
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main(){
+    //2. 文件流
+    ifstream ifs;
+
+    //3. 设置打开方式并判断是否打开成功
+    ifs.open("test.txt", ios::in);
+    if(!ifs.is_open()){
+        cout << "文件打开失败" << endl;
+        return 0;
+    }
+
+    //4. 读入文件 四种读入方式
+    // 4.1 按词读 ifs >> buf;
+    // char buf[1024] = {0};
+    // while(ifs >> buf){
+    //     cout << buf <<endl;
+    // }
+
+    //4.2 按行读 ifs.getline(<字符指针>, <大小>);
+    // char buf[1024] = {0};
+    // while(ifs.getline(buf, sizeof(buf))){
+    //     cout << buf <<endl;
+    // }
+
+    //4.3 按照行读 getline(流对象, 字符串对象);
+    string buf;
+    while(getline(ifs, buf)){
+        cout << buf << endl;
+    }
+
+    //4.4 
+    // char c;
+    // while( (c = ifs.get()) != EOF){
+    //     cout << c;
+    //     //这里不需要加 endl;
+            // 回车符也是一个字符，会被get捕获到
+    // }
+
+    //5. 关闭文件
+    ifs.close();
+    
+    return 0;
+}
+
+```
+
+> ==存在问题==
+>
+> 使用 `ifs` 的 `get()` 方法读取字符后
+>
+> 在打印时，如果打印了 `endl`，汉字会消失
+
+
+
+## 2 二进制文件
+
+以二进制的方式对文件进行读写操作
+
+需要指定打开方式 `ios:binary`
+
+### 2.1 写文件
+
+主要使用 `write()` 函数
+
+语法： `ostream& write(const char* buff, int len)`
+
++ `const char* buff` : 指向内存的一段缓存空间
++ `int len` : 读写的字节数
+
+```c++
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Person{
+public:
+string m_name;
+int m_age;
+};
+int main(){
+    //1. 引入头文件
+    //2. 创建流对象
+    ofstream ofs;
+
+    //3. 设置打开方式
+    ofs.open("test.txt", ios::out|ios::binary|ios::trunc);
+
+    //4. 写入内容
+    Person p;
+    p.m_name = "张三";
+    p.m_age = 18;
+    ofs.write((const char*)&p, sizeof(p));
+    //5. 关闭文件流
+    ofs.close();
+    return 0;
+}
+
+```
+
+> ###### ==存在问题==
+>
+> 二进制写入文件后，会同时写入很多乱码
+
+### 2.2 读文件
+
+```c++
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+class Person{
+public:
+string m_name;
+int m_age;
+};
+int main(){
+
+    //1. 引入头文件
+    //2. 创建流对象
+    ifstream ifs;
+
+    //3. 设置打开方式
+    ifs.open("test.txt", ios::in|ios::binary);
+    if(!ifs.is_open() ){
+        cout << "文件未被正常打开" <<endl;
+        return 0;
+    }
+
+    //4. 读取内容
+    Person p;
+
+    ifs.read((char *)&p , sizeof(p));
+
+    cout << p.m_name << endl;
+    cout << p.m_age << endl;
+    
+    //5. 关闭文件流
+    ifs.close();
+    return 0;
+}
+
+```
+
+# 6 职工管理系统
+
+职工管理系统可以用来管理公司内所有员工的信息
+
+本教程主要利用C++来实现一个基于多态的职工管理系统
+
+
+
+公司中职工分为三类:普通员工、经理、老板，
+
+显示信息时，需要显示职工编号、职工姓名、职工岗位、以及职责
+
+
+
+普通员工职责:完成经理交给的任务
+经理职责:完成老板交给的任务，并下发任务给员工
+
+老板职责:管理公司所有事务
+
+
+
+管理系统中需要实现的功能如下:
+退出管理程序:退出当前管理系统
+增加职工信息:实现批量添加职工功能，将信息录入到文件中，职工信息为:职工编号、姓名、部门编号.
+显示职工信息:显示公司内部所有职工的信息
+删除离职职工:按照编号删除指定的职工
+修改职工信息:按照编号修改职工个人信息
+查找职工信息:按照职工的编号或者职工的姓名进行查找相关的人员信息
+按照编号排序:按照职工编号，进行排序，排序规则由用户指定
+清空所有文档: 清空文件中记录的所有职工信息 (清空前需要再次确认，防止误删)
+
+
 
