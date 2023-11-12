@@ -78,6 +78,27 @@ int main(){
 2. 函数模板在调用时，一定要==对 `T` 指定出具体的数据类型==
    1. 如果是自动类型推导，就需要保持 `T` 的数据类型的一致性
    1. 可以使用显式指定类型
+   
+3. 当函数模板中使用迭代器并声明迭代器对象时，由于编译器不知道对象名前面的是类型名还是迭代器容器中的属性，导致二义性错误而报错，比如：
+
+   1. ```c++
+      template<typename T>
+      void printVectorTemplator(vector<T>& v) {
+      	for ( vector<T>::iterator it = v.begin(); it != v.end(); ++it) { 
+      		cout << *it << '\t';
+      	}
+      	cout << endl;
+      }
+      ```
+
+      1. 报错行：`for ( vector<T>::iterator it = v.begin(); it != v.end(); ++it) { `
+
+      2. 报错原因：编译器不知道 `vector<T>::iterator` 是类型名还是容器中的成员
+
+      3. 解决方法：使用`typename` 对该类型名进行限定
+
+         将源代码改为`for (typename vector<T>::iterator it = v.begin(); it != v.end(); ++it) {`
+
 
 ### 4 函数模板案例 - 不同数据类型数组排序
 
@@ -1011,8 +1032,11 @@ replace
 
 ## 2 vector 容器
 
+<<<<<<< HEAD
 ![image-20231004124656135](lesson06%20-%20c++%20%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B.assets/image-20231004124656135.png)
 
+=======
+>>>>>>> de013e649d3bbde8930a540aea57007a058fa657
 1. 和数组十分相似，被称为**单端数组**
    1. 单端数组的原因是：vector只能在数组末端进行插入删除的操作
 
@@ -4222,4 +4246,111 @@ int main(){
 5. 打印函数
 
    将输入的选手序列打印
+
+![image-20230930181910686](lesson06 - c++ 提高编程/img/image-20230930181910686.png)
+
++   单端数组：只允许尾端进行插入删除操作
+
+    +   `push_back()` 在尾端插入
+    +   `pop_back()` 在尾端删除
+
++   提供接口：
+
+    +   `front()` 第一个元素 
+
+    +   `back()` 最后一个元素
+    +   `insert()` 插入接口
+    +   `erase()` 删除接口
+
++   迭代器：
+    +   `beigin()` 指向第一个元素的第一个位置
+    +   `end()` 指向最后一个元素的后一个位置
+    +   `rbegin()` 指向最后一个元素的位置
+    +   `rend()` 指向第一个元素的前一个位置  
+
+## 1 构造函数
+
+![image-20230930192026397](lesson06 - c++ 提高编程/img/image-20230930192026397.png)
+
+### 1 默认构造函数
+
+```c++
+// 声明
+vector<int> v;
+// 初始化
+for(int i =0; i!=10; ++i){
+    v.push_back(i);
+}
+```
+
+
+
+###  2 通过迭代器传值构造
+
+语法：`vector<T> v2(v1.beigin(), v1.end());`
+
+### 3  n 个 elem 构造
+
+语法：`vector<T> v(n, elem);`
+
+### 4 复制构造函数
+
+语法：`vector<T> v(vector<T> v2);`
+
+### 5 代码
+
+```c++
+#include <iostream>
+using namespace std;
+#include <vector>
+
+void printVector(vector<int> &v) {
+	for ( vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+// 将上述函数改为函数模板效果
+template<typename T>
+void printVectorTemplator(vector<T>& v) {
+	// 需要注意下一行代码，需要使用 typename 限定一下类型名
+	// 如果不使用 typename 编译器会不知道 vector<T>::iterator 是类型名还是容器中的成员，会编译报错
+	for (typename vector<T>::iterator it = v.begin(); it != v.end(); ++it) {
+		cout << *it << '\t';
+	}
+	cout << endl;
+}
+// vector 容器 构造函数
+void test01() {
+	vector<int> v1; // 默认构造
+
+	for (int i = 0; i != 10; ++i) {
+		v1.push_back(i);
+	}
+	printVector(v1);
+
+	vector<int> v2(v1.begin(), v1.end()); // 通过迭代器区间传值
+	printVector(v2);
+
+	vector<int> v3(10, 100); // 通过 n  个 elem
+	printVector(v3);
+
+	vector<int> v4(v3); // 通过拷贝构造函数
+	printVector(v4);
+}
+int main() {
+	test01();
+	return 0;
+}
+```
+
+## 2 赋值操作
+
+给 vector 容器赋值 
+
+1.   重载赋值符号 `=`
+2.   `assign` 方法：
+     1.   `assign(beg, end);`
+     2.   `assign(n, elem);`
 
