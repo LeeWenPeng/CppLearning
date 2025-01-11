@@ -1,0 +1,150 @@
+{
+  "main": {
+    "id": "db361bbb59cc21dd",
+    "type": "split",
+    "children": [
+      {
+        "id": "ebeee9b0b56cb9b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "543a2ad481d9e46c",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2036f3cdace37cdd",
+    "type": "split",
+    "children": [
+      {
+        "id": "05df305ec94a7426",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52e7760619b6b7d0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ef3fcf881ed253fd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7eead0f76547cd5b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e6826530c3481963",
+    "type": "split",
+    "children": [
+      {
+        "id": "4dd874fef5ca83d2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f9a1e66919ae5078",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1037cdfd3c6008c6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "53695b30de9f2de8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c0ccc621861da963",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "543a2ad481d9e46c",
+  "lastOpenFiles": [
+    "1 数据类型.md",
+    "未命名.canvas",
+    "C++知识树.md",
+    "输入输出题目.md",
+    "计算机网络.md",
+    "输入输出.md"
+  ]
+}
