@@ -277,7 +277,7 @@ target: prerequisites ...
 objs = block.o command.o i18n.o input.o main.o scene.o
 
 sudoku: $(objs)
-	g++ -o $@ $^
+	g++ $^ -o $@
 
 block.o: block.cpp block.h common.h color.h display_symbol.h
 command.o: command.cpp scene.h common.h block.h command.h
@@ -364,7 +364,7 @@ a.out & b.out: main.c
 	```makefile
     a & b: main.c
         gcc main.c -o a
-    ```
+   ```
 
 	在这种情况下，`b` 不会被真正创建，可能引发问题。
 
@@ -599,7 +599,7 @@ make 通过两种方式来展开变量：**立即展开（Immediate Expansion）
 
 ```makefile
     VAR := $(shell echo Hello)
- ```
+```
 
 在这个例子中，`VAR` 的值会在 Makefile 被解析时就立刻被计算，`$(shell echo Hello)` 会在读取 Makefile 时执行，而不是在执行规则时。
 
@@ -738,9 +738,9 @@ all:
 
 > 有改动的意思就是其修改时间晚于目标文件的修改时间
 
-### 8.7. 绑定目标的变量
+### 8.7. 绑定目标的变量-变量作用域
 
-Makefile 中的变量一般是**全局变量**，也就是说，在变量定义后，可以在Makefile文件中任意位置对变量进行引用。
+Makefile 中的变量一般是**全局变量**，也就是说，**在变量定义后，可以在Makefile文件中任意位置对变量进行引用**。
 
 在变量定义时，在变量名前添加`目标:`的方式，**绑定目标和变量，限制该变量的使用范围在该目标内**。
 
@@ -771,7 +771,7 @@ global_var = This is a global var!
 
 .PHONY = all
 
-all: first.c second.c third.c
+all: first.c second.o third.o
 
 first.c: target_var = This is target var! 
 
@@ -811,7 +811,7 @@ third.o:
 
 ```makefile
 $(subst target,replacement,text)
-``` 
+```
 
 + 使用 replacement 替换掉 text 中的 target
 + target 需要替换掉的源内容
@@ -1194,10 +1194,10 @@ $(join files1, files2)
 
 #### 9.3.1. wildcard
 
-返回符合通配符的文件列表
+返回符合搜索条件的文件列表
 
 ```makefile
-$(wildcard pattern)
+$(wildcard condition)
 ```
 
 + wildcard 是一个搜索操作，返回的是真实的文件，目录也被视为文件
@@ -1541,7 +1541,7 @@ all:
 
 ### 10.3. 隐式规则的常见场景
 
-隐式规则的主要作用是针对某些常用模式的文件生成过程，例如：
+隐式规则的主要作用是**针对某些常用模式的文件生成过程**，例如：
 
 1. **从 `.c` 文件编译生成 `.o` 文件**：
 
@@ -1551,6 +1551,8 @@ all:
    ```
 
    这是一个典型的隐式规则，表示所有 `.c` 文件可以通过相同的方式生成对应的 `.o` 文件。
+
+   隐式规则是没有明写在Makefile文件中的。
 
 2. **从 `.cpp` 文件生成 `.o` 文件**
 
