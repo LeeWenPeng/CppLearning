@@ -1,4 +1,4 @@
-## 1. 前言
+## 1  前言
 
 课程网址：[从零开始学Makefile](https://www.bilibili.com/video/BV1Bv4y1J7QT/?spm_id_from=333.337.search-card.all.click&vd_source=d9e178b992882410dc0927d40741958a)
 
@@ -12,12 +12,12 @@ make 手册：[make 文档](https://www.gnu.org/software/make/manual/make.html)
 >[!summary] makefile
 > 规则文件，告诉 make 如何进行编译和管理
 
-### 1.1. 实验素材
+### 1.1  实验素材
 
 1. [2048小游戏](https://github.com/plibither8/2048.cpp)
 2. [数独小游戏](https://github.com/mayerui/sudoku)
 
-### 1.2. 信息
+### 1.2  信息
 
 | Suffix | File Contains |
 | ------ | ------------- |
@@ -29,11 +29,11 @@ make 手册：[make 文档](https://www.gnu.org/software/make/manual/make.html)
 | `.s`   | 汇编语言文件        |
 | `.so`  | 动态库文件         |
 
-## 2. 2
+## 2  2
 
-## 3. 最简单的Makefile
+## 3  最简单的Makefile
 
-### 3.1. C++ 源文件：hello.cpp
+### 3.1  C++ 源文件：hello.cpp
 
 ```cpp
 #include <iostream>
@@ -45,7 +45,7 @@ int main(){
 }
 ```
 
-### 3.2. Makefile 文件
+### 3.2  Makefile 文件
 
 ```makefile
 hello: hello.cpp
@@ -64,7 +64,7 @@ hello.o: hello.cpp
 >[!important]
 >缩进处是tab缩进，而非空格缩进。
 
-### 3.3. 命令执行
+### 3.3  命令执行
 
 ```shell
 # 调用make
@@ -74,21 +74,21 @@ make
 ./hello
 ```
 
-### 3.4. 规则
+### 3.4  规则
 
 ![[Make#3 规则]]
 
-## 4. Makefile 文件
+## 4  Makefile 文件
 
-### 4.1. Makefile 文件的命令与指定
+### 4.1  Makefile 文件的命令与指定
 
 [[Make#2.1 Makefile 文件的命名规则与查找方式]]
 
-### 4.2. Makefile 文件内容组成
+### 4.2  Makefile 文件内容组成
 
 [[Make#2.2 Makefile 文件内容组成]]
 
-## 5. 一个稍微复杂的 Makefile
+## 5  一个稍微复杂的 Makefile
 
 针对数独游戏素材的Makefile文件编写
 
@@ -101,7 +101,7 @@ make
 + 首先，先写出最终目标
 + 然后依次解决总目标的依赖
 
-### 5.1. 代码
+### 5.1  代码
 
 ```makefile
 .DEFALUT_GOAL = sudoku
@@ -148,11 +148,11 @@ clean:
 >+ 如果编译和链接没有分开，那么只要有文件改变，所有的文件都需要重新编译重新链接
 >+ 将编译和链接分开后，只需要对更新的文件进行重新的编译，最后进行重新链接
 
-## 6. 伪目标
+## 6  伪目标
 
 ![[Make#伪目标]]
 
-## 7. 依赖类型
+## 7  依赖类型
 
 依赖分为普通依赖与 order-only 依赖两种类型。
 
@@ -162,20 +162,20 @@ clean:
 target : 普通依赖1 普通依赖2 ... | order-only1 order-only2 ...
 ```
 
-### 7.1. 普通依赖特点
+### 7.1  普通依赖特点
 
 + 如果这一依赖是由其他规则生成的文件，那么当执行到该规则时，会先执行生成这一依赖的规则。
 + 如果任何一个依赖目标最终修改时间比目标晚，则重新编译生成目标文件。
 
-### 7.2. order-only 依赖特点
+### 7.2  order-only 依赖特点
 
 + 当依赖文件不存在时，会执行对应方法生成。
 + **依赖文件的更新不会导致目标文件的更新**。
 	+ 检查目标文件更新时，不会检查 order-only 依赖文件的更新
 
-## 8. 关于方法的一些问题
+## 8  关于方法的一些问题
 
-### 8.1. Shell 命令的执行问题
+### 8.1  Shell 命令的执行问题
 
 方法的本质为一系列 Shell 命令。这些命令需要交给终端执行，所以需要符合 Shell 语法。**默认使用的 Shell 为 sh**，可以通过`SHELL`变量来手动指定 Shell。
 
@@ -188,7 +188,7 @@ target : 普通依赖1 普通依赖2 ... | order-only1 order-only2 ...
 .ONESHELL:
 ```
 
-### 8.2. Shell 命令的回显问题
+### 8.2  Shell 命令的回显问题
 
 在执行Shell命令时，首先会打印 Shell 命令，然后再打印 Shell 命令的执行结果。
 
@@ -207,7 +207,7 @@ target: prerequisites ...
 .SILENT: target1 target2 ...
 ```
 
-### 8.3. 错误处理
+### 8.3  错误处理
 
 当方法中有多条 Shell 语句时，
 
@@ -223,31 +223,31 @@ target: prerequisites ...
 	Shell 命令3
 ```
 
-## 9. 使用变量简化
+## 9  使用变量简化
 
 [[Make#7 变量]]
 
-## 10. Makefile执行过程
+## 10  Makefile执行过程
 
 [[Make#变量的展开时机]]
 
-## 11. 变量赋值
+## 11  变量赋值
 
 [[Make#变量的赋值]]
 
-## 12. 定义多行变量
+## 12  定义多行变量
 
 [[Make#多行变量的定义]]
 
-## 13. 取消变量定义
+## 13  取消变量定义
 
 [[Make#取消变量定义]]
 
-## 14. 环境变量的使用
+## 14  环境变量的使用
 
 系统中环境变量在 Makefile 中是可以直接使用的
 
-## 15. 变量替换引用
+## 15  变量替换引用
 
 对 var2 中的值进行字符串替换操作后，再赋值给 var 变量
 
@@ -265,7 +265,7 @@ all:
 # 打印结果为：block.o command.o i18n.o input.o main.o scene.o
 ```
 
-## 16. 变量覆盖
+## 16  变量覆盖
 
 Makefile 文件中定义的变量，可以在执行 make 命令时进行覆盖
 
@@ -279,7 +279,7 @@ make 变量名 = 变量值
 override 变量名 = 值
 ```
 
-## 17. 绑定目标的变量
+## 17  绑定目标的变量
 
 Makefile 中的变量一般是全局变量，也就是说，在变量定义后，可以在Makefile文件中任意位置对变量进行引用。
 
@@ -289,7 +289,7 @@ Makefile 中的变量一般是全局变量，也就是说，在变量定义后�
 目标名: 变量名 = 值
 ```
 
-### 17.1. 一次只能绑定一个变量
+### 17.1  一次只能绑定一个变量
 
 ```makefile
 目标名: 变量名1 = 值 变量名2 = 值
@@ -297,7 +297,7 @@ Makefile 中的变量一般是全局变量，也就是说，在变量定义后�
 
 上述代码中，`变量名1`为变量名，而第一个等号后的所有字符，都将作为值存在，也就是，`值 变量名2 = 值`。
 
-### 17.2. 配合模式匹配使用
+### 17.2  配合模式匹配使用
 
 使用`%`的模式匹配串，**将变量与所有匹配到的目标进行绑定**
 
@@ -305,7 +305,7 @@ Makefile 中的变量一般是全局变量，也就是说，在变量定义后�
 %字符串: 变量名 = 值
 ```
 
-### 17.3. 例子
+### 17.3  例子
 
 ```makefile
 global_var = This is a global var!
@@ -340,7 +340,7 @@ third.o:
 + target_var 绑定到 first.c
 + target2_var 绑定到所有的 .o 文件，也就是 second.o 和 third.o
 
-## 18. 自动变量
+## 18  自动变量
 
 |  代码   | 解释                                                                  |
 | :---: | ------------------------------------------------------------------- |
@@ -390,7 +390,7 @@ clean:
 
 ```
 
-## 19. 二次展开
+## 19  二次展开
 
 通过关键字`.SECONDEXPANSION`可以将变量设置为延迟展开
 
@@ -410,7 +410,7 @@ target: $$(var)
 >结果：不会将变量设置为延迟展开
 >原因：相当于正常引用了变量
 
-## 20. 指定依赖路径
+## 20  指定依赖路径
 
 项目结构的改变
 
@@ -419,7 +419,7 @@ target: $$(var)
 
 当 Makefile 文件与头文件和源文件处于不同的文件夹时，需要指定依赖路径：
 
-### 20.1. 通过变量 VPATH 指定搜索路径
+### 20.1  通过变量 VPATH 指定搜索路径
 
 ```makefile
 VPATH = dirPath1 : dirPath2 : ...
@@ -430,7 +430,7 @@ VPATH = dirPath1 : dirPath2 : ...
 
 设置VPATH之后，make工具在建立依赖图时，便会从给出的路径中搜索
 
-#### 20.1.1. 为源文件指定头文件搜索路径
+#### 20.1.1  为源文件指定头文件搜索路径
 
 make 会将更新方法传递给 sh 执行，sh 将调用 g++ 对源文件进行编译，这时就会触发源文件编译时找不到头文件的错误。因为，我们将源文件放入了 src 文件夹，而头文件则放入了 include 文件夹。因此，需要在更新方法里为 g++ 工具指出头文件所在目录路径。
 
@@ -439,7 +439,7 @@ target: prereq
 	g++ ... -Iinclude
 ```
 
-#### 20.1.2. 使用 VPATH 修改 Makefile 文件
+#### 20.1.2  使用 VPATH 修改 Makefile 文件
 
 ```makefile
 .DEFALUT_GOAL = sudoku
@@ -467,7 +467,7 @@ clean:
 	rm sudoku
 ```
 
-### 20.2. 通过 vpath 指令指定搜索路径
+### 20.2  通过 vpath 指令指定搜索路径
 
 vpath 用法比 VPATH 使用更加灵活，可以为make指定文件类型的搜索路径
 
@@ -491,7 +491,7 @@ vpath % src
 vpath input.cpp src
 ```
 
-#### 20.2.1. 使用 vpath 修改 Makefile 文件
+#### 20.2.1  使用 vpath 修改 Makefile 文件
 
 ```makefile
 .DEFALUT_GOAL = sudoku
@@ -529,9 +529,9 @@ clean:
 
 ```
 
-## 21. 条件判断
+## 21  条件判断
 
-### 21.1. ifdef 和 ifndef
+### 21.1  ifdef 和 ifndef
 
 判断变量是否已经定义
 
@@ -548,7 +548,7 @@ endif
 + 允许嵌套
 + `ifndef` 和 `ifdef`相反
 
-### 21.2. ifeq
+### 21.2  ifeq
 
 判断两个值是否相等
 
@@ -573,19 +573,19 @@ ifeq 'var1' "var2"
 + 允许嵌套
 + `ifneq` 的判断和 `ifeq` 相反
 
-## 22. 字符处理函数
+## 22  字符处理函数
 
 [[Make#8.1 字符串处理函数]]
 
-## 23. 24
+## 23  24
 
 [[Make]]
 
 [[Make]]
 
-## 24. 自动推导与隐式规则
+## 24  自动推导与隐式规则
 
-## 25. 引入其他 Makefile 文件
+## 25  引入其他 Makefile 文件
 
 **使用 `include` 指令可以读入其他 Makefile 文件的内容**，效果如同**在 `include` 位置用对应的文件内容替换**
 
@@ -603,7 +603,7 @@ ifeq 'var1' "var2"
 >+ 使用 `include` 指令，相当于，在使用该指令的位置处，插入对应的 Makefile 文件代码
 >+ 类似于 C++ 中的 `include` 关键字
 
-### 25.1. 使用 include 和多规则更新 Makefile
+### 25.1  使用 include 和多规则更新 Makefile
 
 不再直接写入 cpp 文件需要的多条依赖。
 
@@ -647,7 +647,7 @@ clean:
 
 ```
 
-### 25.2. Makefile 文件内容组成
+### 25.2  Makefile 文件内容组成
 
 一个Makefile文件由五种类型的内容组成：显式规则、隐式规则、变量定义、指令和注释
 
@@ -662,11 +662,11 @@ clean:
 
 Makefile 文件中，**规则书写顺序为目标的依赖顺序**。换句话说，其书写顺序，与编译顺序相反。
 
-## 26. 嵌套 make
+## 26  嵌套 make
 
 在大型项目中，将项目划分为多个子项目并为每个子项目单独创建 `Makefile` 是一种常见的做法。通过在顶层的 `Makefile` 中调用子项目的 `Makefile`，可以实现递归构建。这种方式便于组织和管理复杂的项目。
 
-### 26.1. 语法
+### 26.1  语法
 
 ```makefile
 .PHONY: all clean
@@ -699,7 +699,7 @@ $(MAKE) -C Sub1Dir
 cd Sub1Dir && make
 ```
 
-### 26.2. export
+### 26.2  export
 
 作用：`export` 用于将变量从一个顶层`Makefile` 传递到子 `Makefile` 中，从而在子项目中使用这些变量。
 
@@ -727,9 +727,9 @@ unexport VAR_NAME
 unexport
 ```
 
-### 26.3. 实验
+### 26.3  实验
 
-#### 26.3.1. 实验条件
+#### 26.3.1  实验条件
 
 文件结构
 
@@ -757,7 +757,7 @@ unexport
     └── main.cpp
 ```
 
-#### 26.3.2. 实验步骤
+#### 26.3.2  实验步骤
 
 ##### 1 `lib` 文件夹中创建 `Makefile` 文件
 
