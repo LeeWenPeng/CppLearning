@@ -1,0 +1,14 @@
+{
+	"nodes":[
+		{"id":"1ae9238e95b59a7e","type":"text","text":"依赖条件","x":-220,"y":-262,"width":160,"height":60},
+		{"id":"886a462ae554c497","type":"text","text":"寻找新规则来生成依赖条件","x":140,"y":-140,"width":371,"height":60,"color":"2"},
+		{"id":"a3e2cbaff734a565","type":"text","text":"通过命令生成目标","x":140,"y":-380,"width":260,"height":60},
+		{"id":"03ccfca99df7d9ab","type":"text","text":"生成目标","x":-480,"y":-262,"width":165,"height":60}
+	],
+	"edges":[
+		{"id":"a8625485b5655723","fromNode":"1ae9238e95b59a7e","fromSide":"right","toNode":"a3e2cbaff734a565","toSide":"left","label":"存在"},
+		{"id":"99dc2236fa540597","fromNode":"1ae9238e95b59a7e","fromSide":"right","toNode":"886a462ae554c497","toSide":"left","label":"不存在"},
+		{"id":"8bc5d7dcf16c0269","fromNode":"03ccfca99df7d9ab","fromSide":"right","toNode":"1ae9238e95b59a7e","toSide":"left"},
+		{"id":"74c18dad554a617a","fromNode":"886a462ae554c497","fromSide":"bottom","toNode":"03ccfca99df7d9ab","toSide":"bottom","label":"依赖条件作为子目标，向下寻找"}
+	]
+}

@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"ad823308a07773b7","type":"text","text":"更新目标","x":-525,"y":-86,"width":165,"height":60},
+		{"id":"7ad71276e95415e2","type":"text","text":"依赖","x":240,"y":-270,"width":100,"height":60},
+		{"id":"007cc8212c0f9357","type":"text","text":"依赖","x":240,"y":-172,"width":100,"height":60},
+		{"id":"849ab203e7208554","type":"text","text":"依赖","x":240,"y":-86,"width":100,"height":60},
+		{"id":"40c2a087d49c247c","type":"text","text":"依赖","x":240,"y":-6,"width":100,"height":60},
+		{"id":"20d62c599cd2346d","type":"text","text":"依赖","x":240,"y":74,"width":100,"height":60,"color":"2"},
+		{"id":"d9f8ecb5c8a58c15","type":"text","text":"检查","x":-220,"y":-86,"width":120,"height":60}
+	],
+	"edges":[
+		{"id":"c870efcc36e4e7ac","fromNode":"ad823308a07773b7","fromSide":"right","toNode":"d9f8ecb5c8a58c15","toSide":"left"},
+		{"id":"058c975b8444e802","fromNode":"d9f8ecb5c8a58c15","fromSide":"right","toNode":"849ab203e7208554","toSide":"left"},
+		{"id":"50f26124e50b1899","fromNode":"d9f8ecb5c8a58c15","fromSide":"right","toNode":"007cc8212c0f9357","toSide":"left"},
+		{"id":"98e497887fd29c54","fromNode":"d9f8ecb5c8a58c15","fromSide":"right","toNode":"7ad71276e95415e2","toSide":"left"},
+		{"id":"a0efe9ce5cb92db5","fromNode":"d9f8ecb5c8a58c15","fromSide":"right","toNode":"40c2a087d49c247c","toSide":"left"},
+		{"id":"8262e69d86e81d43","fromNode":"d9f8ecb5c8a58c15","fromSide":"right","toNode":"20d62c599cd2346d","toSide":"left"},
+		{"id":"94b6c260338478ba","fromNode":"20d62c599cd2346d","fromSide":"bottom","toNode":"ad823308a07773b7","toSide":"bottom","label":"依赖的修改时间晚于目标的修改时间"}
+	]
+}
